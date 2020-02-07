@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class Book {
     private final String title;
+    private final String author;
+    private final int year;
 
-    public Book(String bookTitle) {
+    public Book(String bookTitle, String author, int year) {
         this.title = bookTitle;
-    }
-
-    public String getTitle() {
-        return title;
+        this.author = author;
+        this.year = year;
     }
 
     @Override

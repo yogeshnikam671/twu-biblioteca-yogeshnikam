@@ -15,9 +15,9 @@ class LibraryTest {
     void shouldBeAbleToShowListOfBooks() {
         Library library = new Library();
         List<Book> books = new ArrayList<>();
-        books.add(new Book("A"));
-        books.add(new Book("B"));
-        books.add(new Book("C"));
+        books.add(new Book("A","Charles",2015));
+        books.add(new Book("B","Henry",2017));
+        books.add(new Book("C","Richard",2012));
 
         assertEquals(books, library.getListOfBooks());
     }
