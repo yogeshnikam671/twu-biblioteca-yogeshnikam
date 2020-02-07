@@ -10,7 +10,7 @@ public class Greeter {
         return greetingMessage;
     }
 
-    public void greet(){
+    public void greet() {
         System.out.println(greetingMessage);
     }
 }
