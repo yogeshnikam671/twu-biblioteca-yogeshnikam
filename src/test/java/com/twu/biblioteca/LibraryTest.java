@@ -25,7 +25,7 @@ class LibraryTest {
         library.showBooks();
 
         assertEquals(books, library.getBooks());
-        assertEquals("1. A\n2. B\n3. C\n", outContent.toString());
+        assertEquals("1. A\tCharles\t2015\n2. B\tHenry\t2017\n3. C\tRichard\t2012\n", outContent.toString());
     }
 
     @Test

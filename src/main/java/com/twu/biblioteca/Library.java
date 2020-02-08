@@ -28,7 +28,7 @@ public class Library {
     public void showBooks() {
         int i = 1;
         for (Book book : books) {
-            System.out.println(i + ". " + book.getTitle());
+            System.out.println(i + ". " + book.getInfo());
             i++;
         }
     }

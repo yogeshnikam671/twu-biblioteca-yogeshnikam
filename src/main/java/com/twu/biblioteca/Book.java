@@ -13,6 +13,10 @@ public class Book {
         this.year = year;
     }
 
+    public String getInfo(){
+        return title + "\t" + author + "\t" + year;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
