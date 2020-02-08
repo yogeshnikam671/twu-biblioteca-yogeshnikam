@@ -43,4 +43,16 @@ class LibraryTest {
 
         assertEquals(books, library.getBooks());
     }
+
+    @Test
+    void shouldAllowTheCustomerToReturnABook() {
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+        Book book = new Book("C", "Richard", 2012);
+
+        library.checkOut(book);
+        library.returnBack(book);
+
+        assertTrue(library.getBooks().contains(book));
+    }
 }

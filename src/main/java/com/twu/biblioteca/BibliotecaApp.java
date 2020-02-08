@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BibliotecaApp {

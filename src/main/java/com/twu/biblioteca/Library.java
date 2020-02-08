@@ -42,5 +42,9 @@ public class Library {
 
         librarian.notifyAsUnsuccessfulCheckOut();
     }
+
+    public void returnBack(Book book) {
+        books.add(book);
+    }
 }
 
