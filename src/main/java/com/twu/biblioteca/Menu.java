@@ -11,13 +11,13 @@ public class Menu {
     private List<String> options;
 
     public Menu() {
-        optionId = new ArrayList<>(asList(1, 2));
-        options = new ArrayList<>(asList("List of books", "Quit the application"));
+        optionId = new ArrayList<>(asList(1, 2, 3));
+        options = new ArrayList<>(asList("List of books", "Checkout a book" ,"Quit the application"));
     }
 
     public void display() {
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             System.out.println(optionId.get(i) + " " + options.get(i));
         }
     }

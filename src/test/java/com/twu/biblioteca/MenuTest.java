@@ -20,7 +20,7 @@ class MenuTest {
 
         menu.display();
 
-        assertEquals("1 List of books\n2 Quit the application\n", outContent.toString());
+        assertEquals("1 List of books\n2 Checkout a book\n3 Quit the application\n", outContent.toString());
     }
 
     @Test
@@ -36,7 +36,7 @@ class MenuTest {
     void shouldBeAbleCheckInputFromUserIsInValid() {
         Menu menu = new Menu();
 
-        boolean isValid = menu.isValidOption("3");
+        boolean isValid = menu.isValidOption("10");
 
         assertFalse(isValid);
     }
