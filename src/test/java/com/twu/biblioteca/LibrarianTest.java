@@ -86,6 +86,8 @@ class LibrarianTest {
         Library library = new Library(librarian);
         Book book = new Book("C", "Richard", 2012);
 
+        library.checkOut(book);
+
         assertTrue(librarian.isValid(book));
     }
 
@@ -96,5 +98,21 @@ class LibrarianTest {
         Book book = new Book("D", "Rajesh", 2012);
 
         assertFalse(librarian.isValid(book));
+    }
+
+    @Test
+    void shouldNotifyCustomerOnSuccessfulReturnOfTheBook() {
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+        Book book = new Book("C", "Richard", 2012);
+        String expectedMessage = "Thank you for returning the book";
+        library.checkOut(book);
+
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        library.returnBack(book);
+
+        assertEquals(expectedMessage, outContent.toString());
     }
 }
