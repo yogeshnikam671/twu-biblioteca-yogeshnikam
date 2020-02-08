@@ -22,4 +22,9 @@ public class Librarian {
     public void notifyAsUnsuccessfulCheckOut(){
         System.out.print("Sorry, that book is not available");
     }
+
+
+    public void markAsReturned(Book book) {
+        checkedOutBooks.remove(book);
+    }
 }

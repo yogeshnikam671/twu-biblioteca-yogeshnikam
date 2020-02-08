@@ -45,6 +45,7 @@ public class Library {
 
     public void returnBack(Book book) {
         books.add(book);
+        librarian.markAsReturned(book);
     }
 }
 

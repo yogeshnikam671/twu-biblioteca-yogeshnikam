@@ -67,4 +67,16 @@ class LibrarianTest {
 
         assertEquals(expectedMessage, outContent.toString());
     }
+
+    @Test
+    void shouldRemoveTheBookFromCheckedOutListWhenItIsReturned() {
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+        Book book = new Book("C", "Richard", 2012);
+
+        library.checkOut(book);
+        library.returnBack(book);
+
+        assertFalse(librarian.getCheckedOutBooks().contains(book));
+    }
 }
