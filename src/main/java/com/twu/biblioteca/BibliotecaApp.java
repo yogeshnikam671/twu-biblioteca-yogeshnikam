@@ -24,6 +24,7 @@ public class BibliotecaApp {
 
         if(option.equals("1"))
             library.showBooks();
-
+        else
+            System.exit(0);
     }
 }
