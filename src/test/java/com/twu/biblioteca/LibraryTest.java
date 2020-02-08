@@ -13,12 +13,18 @@ class LibraryTest {
 
     @Test
     void shouldBeAbleToShowListOfBooks() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
         Library library = new Library();
         List<Book> books = new ArrayList<>();
         books.add(new Book("A","Charles",2015));
         books.add(new Book("B","Henry",2017));
         books.add(new Book("C","Richard",2012));
 
-        assertEquals(books, library.getListOfBooks());
+        library.showBooks();
+
+        assertEquals(books, library.getBooks());
+        assertEquals("A\nB\nC\n", outContent.toString());
     }
 }

@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
+        Library library = new Library();
         Greeter greeter = new Greeter();
         greeter.greet();
         System.out.println();
@@ -20,5 +21,6 @@ public class BibliotecaApp {
             System.out.println("Please select a valid option");
             option = input.next();
         }
+
     }
 }

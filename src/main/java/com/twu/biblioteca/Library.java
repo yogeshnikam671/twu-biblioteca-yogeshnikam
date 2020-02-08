@@ -12,8 +12,13 @@ public class Library {
         books.add(new Book("C","Richard",2012));
     }
 
-    public List<Book> getListOfBooks() {
+    public List<Book> getBooks() {
         return books;
+    }
+
+    public void showBooks(){
+        for(Book book : books)
+            System.out.println(book.getTitle());
     }
 }
 
