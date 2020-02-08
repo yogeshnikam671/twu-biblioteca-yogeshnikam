@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Book {
     private final String title;
@@ -15,6 +16,15 @@ public class Book {
 
     public String getInfo(){
         return title + "\t" + author + "\t" + year;
+    }
+
+    public static Book getInputtedBook() {
+        Scanner scanner = new Scanner(System.in);
+        String title = scanner.next();
+        String author = scanner.next();
+        int year = scanner.nextInt();
+
+        return new Book(title, author, year);
     }
 
     @Override

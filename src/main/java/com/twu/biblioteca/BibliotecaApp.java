@@ -22,9 +22,13 @@ public class BibliotecaApp {
             option = input.next();
         }
 
-        if (option.equals("1"))
-            library.showBooks();
-        else
-            System.exit(0);
+        int selectedOption = Integer.parseInt(option);
+        switch(selectedOption){
+            case 1 : library.showBooks();break;
+
+            case 2 : Book book = Book.getInputtedBook();
+                     library.checkOut(book);break;
+        }
+
     }
 }
