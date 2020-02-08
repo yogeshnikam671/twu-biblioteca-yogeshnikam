@@ -14,6 +14,6 @@ class MenuTest {
 
         menu.display();
 
-        assertEquals("List of books", outContent.toString());
+        assertEquals("1 List of books\n2 Quit the application\n", outContent.toString());
     }
 }
