@@ -1,6 +1,8 @@
+package com.twu.biblioteca;
+
 public class Menu {
-    int[] optionId = new int[2];
-    String[] options = new String[2];
+    private int[] optionId = new int[2];
+    private String[] options = new String[2];
 
     public Menu(){
         optionId[0] = 1;
@@ -13,5 +15,13 @@ public class Menu {
         for(int i = 0; i< 2 ; i++){
             System.out.println(optionId[i] + " " + options[i]);
         }
+    }
+
+    public boolean isValidOption(int option) {
+        for(int i = 0; i < options.length; i++){
+            if(option == optionId[i])
+                return true;
+        }
+        return false;
     }
 }
