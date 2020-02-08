@@ -88,4 +88,13 @@ class LibrarianTest {
 
         assertTrue(librarian.isValid(book));
     }
+
+    @Test
+    void shouldBeAbleToCheckIfTheCustomerIsReturningAnInValidBook() {
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+        Book book = new Book("D", "Rajesh", 2012);
+
+        assertFalse(librarian.isValid(book));
+    }
 }

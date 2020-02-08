@@ -29,6 +29,6 @@ public class Librarian {
     }
 
     public boolean isValid(Book book) {
-        return true;
+        return checkedOutBooks.contains(book);
     }
 }
