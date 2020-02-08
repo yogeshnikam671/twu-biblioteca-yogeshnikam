@@ -22,7 +22,7 @@ public class Book {
         Scanner scanner = new Scanner(System.in);
         String title = scanner.next();
         String author = scanner.next();
-        int year = scanner.nextInt();
+        int year = Integer.parseInt( scanner.next() );
 
         return new Book(title, author, year);
     }

@@ -6,10 +6,13 @@ public class BibliotecaApp {
 
 
     public static void main(String[] args) {
-        Library library = new Library();
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
         Greeter greeter = new Greeter();
+
         greeter.greet();
         System.out.println();
+
         Menu menu = new Menu();
         menu.display();
 
@@ -24,10 +27,12 @@ public class BibliotecaApp {
 
         int selectedOption = Integer.parseInt(option);
         switch(selectedOption){
-            case 1 : library.showBooks();break;
+            case 1 : library.showBooks(); break;
 
             case 2 : Book book = Book.getInputtedBook();
-                     library.checkOut(book);break;
+                     library.checkOut(book); break;
+
+            case 3 : System.exit(0);
         }
 
     }
