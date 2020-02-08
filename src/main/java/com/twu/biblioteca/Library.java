@@ -47,7 +47,10 @@ public class Library {
         if (librarian.isValid(book)) {
             books.add(book);
             librarian.markAsReturned(book);
+            return;
         }
+
+        librarian.notifyAsUnsuccessfulReturn();
     }
 }
 

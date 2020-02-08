@@ -32,4 +32,8 @@ public class Librarian {
     public boolean isValid(Book book) {
         return checkedOutBooks.contains(book);
     }
+
+    public void notifyAsUnsuccessfulReturn() {
+        System.out.print("This is not a valid book to return");
+    }
 }

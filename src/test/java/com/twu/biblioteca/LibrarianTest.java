@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -94,7 +93,6 @@ class LibrarianTest {
     @Test
     void shouldBeAbleToCheckIfTheCustomerIsReturningAnInValidBook() {
         Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
         Book book = new Book("D", "Rajesh", 2012);
 
         assertFalse(librarian.isValid(book));
@@ -115,4 +113,21 @@ class LibrarianTest {
 
         assertEquals(expectedMessage, outContent.toString());
     }
+
+    @Test
+    void shouldNotifyCustomerOnUnSuccessfulReturnOfTheBook() {
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+        Book book = new Book("D", "Rajesh", 2012);
+        String expectedMessage = "This is not a valid book to return";
+        library.checkOut(book);
+
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        library.returnBack(book);
+
+        assertEquals(expectedMessage, outContent.toString());
+    }
+
 }

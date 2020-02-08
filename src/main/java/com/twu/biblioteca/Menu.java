@@ -16,6 +16,7 @@ public class Menu {
     }
 
     public void display() {
+
         for (int i = 0; i < 2; i++) {
             System.out.println(optionId.get(i) + " " + options.get(i));
         }
