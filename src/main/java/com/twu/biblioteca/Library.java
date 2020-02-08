@@ -34,8 +34,13 @@ public class Library {
     }
 
     public void checkOut(Book book) {
-        books.remove(book);
-        librarian.markAsCheckedOut(book);
+        if (books.contains(book)) {
+            books.remove(book);
+            librarian.markAsCheckedOut(book);
+            return;
+        }
+
+        librarian.notifyAsUnsuccessfulCheckOut();
     }
 }
 

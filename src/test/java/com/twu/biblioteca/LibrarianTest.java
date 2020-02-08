@@ -52,4 +52,19 @@ class LibrarianTest {
 
         assertEquals(expectedMessage, outContent.toString());
     }
+
+    @Test
+    void shouldNotifyCustomerOnUnSuccessfulCheckoutOfTheBook() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+        Book book = new Book("D", "Rajesh", 2012);
+        String expectedMessage = "Sorry, that book is not available";
+
+        library.checkOut(book);
+
+        assertEquals(expectedMessage, outContent.toString());
+    }
 }

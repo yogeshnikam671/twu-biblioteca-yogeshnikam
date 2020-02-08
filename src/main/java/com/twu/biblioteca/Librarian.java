@@ -18,4 +18,8 @@ public class Librarian {
         checkedOutBooks.add(book);
         System.out.print("Thank You! Enjoy the book");
     }
+
+    public void notifyAsUnsuccessfulCheckOut(){
+        System.out.print("Sorry, that book is not available");
+    }
 }
