@@ -1,27 +1,27 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static java.util.Arrays.*;
+
 public class Menu {
-    private int[] optionId = new int[2];
-    private String[] options = new String[2];
+    private List<Integer> optionId;
+    private List<String> options;
 
     public Menu(){
-        optionId[0] = 1;
-        options[0] = "List of books";
-        optionId[1] = 2;
-        options[1] = "Quit the application";
+        optionId = new ArrayList<>(asList(1, 2));
+        options = new ArrayList<>(asList("List of books", "Quit the application"));
     }
 
     public void display() {
         for(int i = 0; i< 2 ; i++){
-            System.out.println(optionId[i] + " " + options[i]);
+            System.out.println(optionId.get(i) + " " + options.get(i));
         }
     }
 
     public boolean isValidOption(int option) {
-        for(int i = 0; i < options.length; i++){
-            if(option == optionId[i])
-                return true;
-        }
-        return false;
+        return optionId.contains(option);
     }
 }
