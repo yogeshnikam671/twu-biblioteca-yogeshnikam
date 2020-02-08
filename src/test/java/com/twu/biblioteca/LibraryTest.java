@@ -18,13 +18,28 @@ class LibraryTest {
 
         Library library = new Library();
         List<Book> books = new ArrayList<>();
-        books.add(new Book("A","Charles",2015));
-        books.add(new Book("B","Henry",2017));
-        books.add(new Book("C","Richard",2012));
+        books.add(new Book("A", "Charles", 2015));
+        books.add(new Book("B", "Henry", 2017));
+        books.add(new Book("C", "Richard", 2012));
 
         library.showBooks();
 
         assertEquals(books, library.getBooks());
         assertEquals("1. A\n2. B\n3. C\n", outContent.toString());
+    }
+
+    @Test
+    void shouldAllowTheCustomerToCheckOutABook() {
+        Library library = new Library();
+
+        List<Book> books = new ArrayList<>();
+        books.add(new Book("A", "Charles", 2015));
+        books.add(new Book("B", "Henry", 2017));
+
+        Book book = new Book("C", "Richard", 2012);
+
+        library.checkOut(book);
+
+        assertEquals(books, library.getBooks());
     }
 }

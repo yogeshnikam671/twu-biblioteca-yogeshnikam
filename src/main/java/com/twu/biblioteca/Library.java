@@ -23,5 +23,9 @@ public class Library {
             i++;
         }
     }
+
+    public void checkOut(Book book) {
+        books.remove(book);
+    }
 }
 
