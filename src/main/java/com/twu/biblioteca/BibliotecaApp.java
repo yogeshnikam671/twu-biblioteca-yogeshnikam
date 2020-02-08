@@ -18,12 +18,12 @@ public class BibliotecaApp {
 
         String option = input.next();
 
-        while(!menu.isValidOption(option)){
+        while (!menu.isValidOption(option)) {
             System.out.println("Please select a valid option");
             option = input.next();
         }
 
-        if(option.equals("1"))
+        if (option.equals("1"))
             library.showBooks();
         else
             System.exit(0);

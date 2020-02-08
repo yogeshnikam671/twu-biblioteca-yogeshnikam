@@ -5,11 +5,20 @@ import java.util.List;
 
 public class Library {
     private List<Book> books = new ArrayList<>();
+    private Librarian librarian;
 
     public Library() {
         books.add(new Book("A", "Charles", 2015));   // pre-existing books
         books.add(new Book("B", "Henry", 2017));
         books.add(new Book("C", "Richard", 2012));
+    }
+
+    public Library(Librarian librarian) {
+        books.add(new Book("A", "Charles", 2015));   // pre-existing books
+        books.add(new Book("B", "Henry", 2017));
+        books.add(new Book("C", "Richard", 2012));
+
+        this.librarian = librarian;
     }
 
     public List<Book> getBooks() {
@@ -26,6 +35,7 @@ public class Library {
 
     public void checkOut(Book book) {
         books.remove(book);
+        librarian.markAsCheckedOut(book);
     }
 }
 
