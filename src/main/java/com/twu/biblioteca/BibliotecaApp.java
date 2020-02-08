@@ -29,10 +29,15 @@ public class BibliotecaApp {
         switch(selectedOption){
             case 1 : library.showBooks(); break;
 
-            case 2 : Book book = Book.getInputtedBook();
+            case 2 : System.out.println("Enter Title, Author and Year Of Publication, respectively");
+                     Book book = Book.getInputtedBook();
                      library.checkOut(book); break;
 
-            case 3 : System.exit(0);
+            case 3 : System.out.println("Enter Title, Author and Year Of Publication, respectively");
+                     book = Book.getInputtedBook();
+                     library.returnBack(book); break;
+
+            case 4 : System.exit(0);
         }
 
     }
