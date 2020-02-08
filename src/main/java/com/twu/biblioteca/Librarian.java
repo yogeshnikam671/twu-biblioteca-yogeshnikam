@@ -16,5 +16,6 @@ public class Librarian {
 
     public void markAsCheckedOut(Book book) {
         checkedOutBooks.add(book);
+        System.out.print("Thank You! Enjoy the book");
     }
 }

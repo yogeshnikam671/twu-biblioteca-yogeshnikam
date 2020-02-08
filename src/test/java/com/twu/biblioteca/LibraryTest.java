@@ -30,7 +30,8 @@ class LibraryTest {
 
     @Test
     void shouldAllowTheCustomerToCheckOutABook() {
-        Library library = new Library();
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
 
         List<Book> books = new ArrayList<>();
         books.add(new Book("A", "Charles", 2015));

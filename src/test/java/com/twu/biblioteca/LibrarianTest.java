@@ -2,6 +2,8 @@ package com.twu.biblioteca;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,5 +36,20 @@ class LibrarianTest {
 
 
         assertEquals(checkedOutBooks, librarian.getCheckedOutBooks());
+    }
+
+    @Test
+    void shouldNotifyCustomerOnSuccessfulCheckoutOfTheBook() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+        Book book = new Book("C", "Richard", 2012);
+        String expectedMessage = "Thank You! Enjoy the book";
+
+        library.checkOut(book);
+
+        assertEquals(expectedMessage, outContent.toString());
     }
 }
