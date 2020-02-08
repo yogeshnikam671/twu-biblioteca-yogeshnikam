@@ -27,4 +27,8 @@ public class Librarian {
     public void markAsReturned(Book book) {
         checkedOutBooks.remove(book);
     }
+
+    public boolean isValid(Book book) {
+        return true;
+    }
 }
