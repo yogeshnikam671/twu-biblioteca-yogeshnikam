@@ -1,3 +1,5 @@
+package com.twu.biblioteca;
+
 import com.twu.biblioteca.Menu;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -25,7 +27,7 @@ class MenuTest {
     void shouldBeAbleCheckInputFromUserIsValid() {
         Menu menu = new Menu();
 
-        boolean isValid = menu.isValidOption(1);
+        boolean isValid = menu.isValidOption("1");
 
         assertTrue(isValid);
     }
@@ -34,7 +36,16 @@ class MenuTest {
     void shouldBeAbleCheckInputFromUserIsInValid() {
         Menu menu = new Menu();
 
-        boolean isValid = menu.isValidOption(3);
+        boolean isValid = menu.isValidOption("3");
+
+        assertFalse(isValid);
+    }
+
+    @Test
+    void shouldBeAbleCheckInputFromUserIsOfInValidType() {
+        Menu menu = new Menu();
+
+        boolean isValid = menu.isValidOption("abcd");
 
         assertFalse(isValid);
     }

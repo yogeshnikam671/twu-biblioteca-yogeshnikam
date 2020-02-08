@@ -10,18 +10,26 @@ public class Menu {
     private List<Integer> optionId;
     private List<String> options;
 
-    public Menu(){
+    public Menu() {
         optionId = new ArrayList<>(asList(1, 2));
         options = new ArrayList<>(asList("List of books", "Quit the application"));
     }
 
     public void display() {
-        for(int i = 0; i< 2 ; i++){
+        for (int i = 0; i < 2; i++) {
             System.out.println(optionId.get(i) + " " + options.get(i));
         }
     }
 
-    public boolean isValidOption(int option) {
-        return optionId.contains(option);
+    public boolean isValidOption(String option) {
+        int input;
+
+        try {
+            input = Integer.parseInt(option);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        return optionId.contains(input);
     }
 }
