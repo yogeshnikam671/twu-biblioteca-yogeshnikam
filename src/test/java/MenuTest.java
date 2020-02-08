@@ -29,4 +29,13 @@ class MenuTest {
 
         assertTrue(isValid);
     }
+
+    @Test
+    void shouldBeAbleCheckInputFromUserIsInValid() {
+        Menu menu = new Menu();
+
+        boolean isValid = menu.isValidOption(3);
+
+        assertFalse(isValid);
+    }
 }
