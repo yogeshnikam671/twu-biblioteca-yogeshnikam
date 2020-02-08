@@ -22,5 +22,8 @@ public class BibliotecaApp {
             option = input.next();
         }
 
+        if(option.equals("1"))
+            library.showBooks();
+
     }
 }
