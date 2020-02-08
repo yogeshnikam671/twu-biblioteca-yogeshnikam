@@ -2,6 +2,11 @@ package com.twu.biblioteca;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibrarianTest {
@@ -13,6 +18,21 @@ class LibrarianTest {
 
         library.checkOut(book);
 
-        assertEquals(book, librarian.getCheckedOutBook());
+        assertTrue(librarian.getCheckedOutBooks().contains(book));
+    }
+
+    @Test
+    void shouldBeAbleToPrepareAListOfCheckedOutBooksForCollection() {
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+        Book book1 = new Book("C", "Richard", 2012);
+        Book book2 = new Book("A", "Charles", 2015);
+        List<Book> checkedOutBooks = new ArrayList<>(asList(book1, book2));
+
+        library.checkOut(book1);
+        library.checkOut(book2);
+
+
+        assertEquals(checkedOutBooks, librarian.getCheckedOutBooks());
     }
 }

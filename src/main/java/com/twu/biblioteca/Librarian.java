@@ -1,16 +1,20 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Librarian {
-    private Book checkedOutBook;
+    private List<Book> checkedOutBooks;
 
     public Librarian() {
+        checkedOutBooks = new ArrayList<>();
     }
 
-    public Book getCheckedOutBook() {
-        return checkedOutBook;
+    public List<Book> getCheckedOutBooks() {
+        return checkedOutBooks;
     }
 
     public void markAsCheckedOut(Book book) {
-        checkedOutBook = book;
+        checkedOutBooks.add(book);
     }
 }
