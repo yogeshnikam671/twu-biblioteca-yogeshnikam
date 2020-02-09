@@ -6,6 +6,7 @@ import java.util.List;
 public class Library {
     private List<Book> books = new ArrayList<>();
     private Librarian librarian;
+    private int INITIAL_INDEX = 1;
 
     public Library() {
         books.add(new Book("A", "Charles", 2015));   // pre-existing books
@@ -26,7 +27,7 @@ public class Library {
     }
 
     public void showBooks() {
-        int i = 1;
+        int i = INITIAL_INDEX;
         for (Book book : books) {
             System.out.println(i + ". " + book.getInfo());
             i++;
