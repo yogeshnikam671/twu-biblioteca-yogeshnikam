@@ -26,28 +26,32 @@ public class BibliotecaApp {
                 option = input.next();
             }
 
-            int selectedOption = Integer.parseInt(option);
-            switch (selectedOption) {
-                case 1:
-                    library.showBooks();
-                    break;
-
-                case 2:
-                    System.out.println("Enter Title, Author and Year Of Publication, respectively");
-                    Book book = Book.getInputtedBook();
-                    library.checkOut(book);
-                    break;
-
-                case 3:
-                    System.out.println("Enter Title, Author and Year Of Publication, respectively");
-                    book = Book.getInputtedBook();
-                    library.returnBack(book);
-                    break;
-
-                case 4:
-                    System.exit(0);
-            }
-            System.out.print("\n\n");
+            process(option, library);
         }
+    }
+
+    private static void process(String option, Library library) {
+        int selectedOption = Integer.parseInt(option);
+        switch (selectedOption) {
+            case 1:
+                library.showBooks();
+                break;
+
+            case 2:
+                System.out.println("Enter Title, Author and Year Of Publication, respectively");
+                Book book = Book.getInputtedBook();
+                library.checkOut(book);
+                break;
+
+            case 3:
+                System.out.println("Enter Title, Author and Year Of Publication, respectively");
+                book = Book.getInputtedBook();
+                library.returnBack(book);
+                break;
+
+            case 4:
+                System.exit(0);
+        }
+        System.out.print("\n\n");
     }
 }
