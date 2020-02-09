@@ -10,6 +10,11 @@ public class Menu {
     private List<Integer> optionId;
     private List<String> options;
 
+    public static final int SHOW_BOOKS = 1;
+    public static final int CHECKOUT_BOOK = 2;
+    public static final int RETURN_BOOK = 3;
+    public static final int QUIT = 4;
+
     public Menu() {
         optionId = new ArrayList<>(asList(1, 2, 3, 4));
         options = new ArrayList<>(asList("List of books", "Checkout a book", "Return a book","Quit the application"));

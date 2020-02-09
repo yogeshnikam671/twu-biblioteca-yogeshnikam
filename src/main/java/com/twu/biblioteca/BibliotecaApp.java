@@ -33,23 +33,23 @@ public class BibliotecaApp {
     private static void process(String option, Library library) {
         int selectedOption = Integer.parseInt(option);
         switch (selectedOption) {
-            case 1:
+            case Menu.SHOW_BOOKS:
                 library.showBooks();
                 break;
 
-            case 2:
+            case Menu.CHECKOUT_BOOK:
                 System.out.println("Enter Title, Author and Year Of Publication, respectively");
                 Book book = Book.getInputtedBook();
                 library.checkOut(book);
                 break;
 
-            case 3:
+            case Menu.RETURN_BOOK:
                 System.out.println("Enter Title, Author and Year Of Publication, respectively");
                 book = Book.getInputtedBook();
                 library.returnBack(book);
                 break;
 
-            case 4:
+            case Menu.QUIT:
                 System.exit(0);
         }
         System.out.print("\n\n");
