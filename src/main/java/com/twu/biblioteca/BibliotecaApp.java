@@ -21,7 +21,6 @@ public class BibliotecaApp {
             Scanner input = new Scanner(System.in);
 
             String option = input.next();
-
             while (!menu.isValidOption(option)) {
                 System.out.println("Please select a valid option");
                 option = input.next();
@@ -48,7 +47,7 @@ public class BibliotecaApp {
                 case 4:
                     System.exit(0);
             }
-            System.out.println();
+            System.out.print("\n\n");
         }
     }
 }

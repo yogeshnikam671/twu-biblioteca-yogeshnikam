@@ -19,10 +19,9 @@ public class Librarian {
         System.out.print("Thank You! Enjoy the book");
     }
 
-    public void notifyAsUnsuccessfulCheckOut(){
+    public void notifyAsUnsuccessfulCheckOut() {
         System.out.print("Sorry, that book is not available");
     }
-
 
     public void markAsReturned(Book book) {
         checkedOutBooks.remove(book);
