@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
-
+    @SuppressWarnings("InfiniteLoopStatement")
     public static void main(String[] args) {
         Librarian librarian = new Librarian();
         Library library = new Library(librarian);
