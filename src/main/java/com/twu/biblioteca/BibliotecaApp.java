@@ -48,7 +48,7 @@ public class BibliotecaApp {
         }
     }
 
-    private static void process(int choice) {
+    private void process(int choice) {
         Option option = getOption(choice);
         option.process(library, scanner);
     }
