@@ -20,7 +20,7 @@ class MenuTest {
 
         menu.display();
 
-        assertEquals("1 List of books\n2 Checkout a book\n3 Return a book\n4 Quit the application\n", outContent.toString());
+        assertEquals("\nMenu:\n\n1 List of books\n2 Checkout a book\n3 Return a book\n4 Quit the application\n", outContent.toString());
     }
 
     @Test

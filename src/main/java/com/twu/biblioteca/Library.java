@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class Library {
     private List<Book> books = new ArrayList<>();
@@ -38,6 +37,7 @@ public class Library {
         if (books.contains(book)) {
             books.remove(book);
             librarian.markAsCheckedOut(book);
+            librarian.notifyAsSuccessfulCheckout();
             return;
         }
 
@@ -45,9 +45,10 @@ public class Library {
     }
 
     public void returnBack(Book book) {
-        if (librarian.isValid(book)) {
+        if (librarian.isCheckedOut(book)) {
             books.add(book);
             librarian.markAsReturned(book);
+            librarian.notifyAsSuccessfulReturn();
             return;
         }
 

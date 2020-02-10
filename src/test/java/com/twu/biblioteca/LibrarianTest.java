@@ -87,7 +87,7 @@ class LibrarianTest {
 
         library.checkOut(book);
 
-        assertTrue(librarian.isValid(book));
+        assertTrue(librarian.isCheckedOut(book));
     }
 
     @Test
@@ -95,7 +95,7 @@ class LibrarianTest {
         Librarian librarian = new Librarian();
         Book book = new Book("D", "Rajesh", 2012);
 
-        assertFalse(librarian.isValid(book));
+        assertFalse(librarian.isCheckedOut(book));
     }
 
     @Test

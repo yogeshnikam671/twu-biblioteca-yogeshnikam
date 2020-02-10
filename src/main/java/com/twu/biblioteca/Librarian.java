@@ -16,19 +16,17 @@ public class Librarian {
 
     public List<Book> getCheckedOutBooks() {
         return checkedOutBooks;
-    } //TODO: do you need this ?
+    }
 
     public void markAsCheckedOut(Book book) { //TODO: no tests, method name does not reveal the intention
         checkedOutBooks.add(book);
-        notifyAsSuccessfulCheckout();
     }
 
     public void markAsReturned(Book book) { //TODO: no tests, method name does not reveal the intention
         checkedOutBooks.remove(book);
-        notifyAsSuccessfulReturn();
     }
 
-    public boolean isValid(Book book) {  // TODO: name
+    public boolean isCheckedOut(Book book) {
         return checkedOutBooks.contains(book);
     }
 
@@ -40,11 +38,11 @@ public class Librarian {
         System.out.print(UNSUCCESS_RETURN_MESSAGE);
     }  // TODO: no tests
 
-    private void notifyAsSuccessfulCheckout() {
+    public void notifyAsSuccessfulCheckout() {
         System.out.print(SUCCESS_CHECKOUT_MESSAGE);
     } // TODO: think of whos responsibility is printing or displaying
 
-    private void notifyAsSuccessfulReturn() {
+    public void notifyAsSuccessfulReturn() {
         System.out.print(SUCCESS_RETURN_MESSAGE);
     }
 
