@@ -40,11 +40,11 @@ public class Librarian {
         System.out.print(UNSUCCESS_RETURN_MESSAGE);
     }
 
-    private void notifyAsSuccessfulCheckout(){
+    private void notifyAsSuccessfulCheckout() {
         System.out.print(SUCCESS_CHECKOUT_MESSAGE);
     }
 
-    private void notifyAsSuccessfulReturn(){
+    private void notifyAsSuccessfulReturn() {
         System.out.print(SUCCESS_RETURN_MESSAGE);
     }
 
