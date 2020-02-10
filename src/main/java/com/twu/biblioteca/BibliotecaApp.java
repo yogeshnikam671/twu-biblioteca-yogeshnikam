@@ -7,6 +7,8 @@ import static com.twu.biblioteca.Printer.*;
 import static java.lang.Integer.parseInt;
 
 public class BibliotecaApp {
+    private static Scanner scanner = new Scanner(System.in);
+
 
     @SuppressWarnings("InfiniteLoopStatement")
     public static void main(String[] args) {
@@ -21,8 +23,6 @@ public class BibliotecaApp {
 
         while (true) {
             menu.display();
-
-            Scanner scanner = new Scanner(System.in);
 
             String choice = scanner.next();
             if (!menu.isValidOption(choice)) {
