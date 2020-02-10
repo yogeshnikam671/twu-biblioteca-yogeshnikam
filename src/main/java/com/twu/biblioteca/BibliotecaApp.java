@@ -36,6 +36,6 @@ public class BibliotecaApp {
 
     private static void process(Library library, int choice) {
         Option option = getOption(choice);
-        option.process(library);
+        option.process(library, scanner);
     }
 }

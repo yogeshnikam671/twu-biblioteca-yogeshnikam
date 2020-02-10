@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 import static com.twu.biblioteca.Printer.*;
 
@@ -10,32 +11,32 @@ public abstract class Option {
 
     public static final Option SHOW_BOOKS = new Option() {
         @Override
-        public void process(Library library) {
+        public void process(Library library, Scanner scanner) {
             library.showBooks();
         }
     };
 
     public static final Option CHECKOUT_BOOK = new Option() {
         @Override
-        public void process(Library library) {
+        public void process(Library library, Scanner scanner) {
             print("Enter Title, Author and Year Of Publication, respectively");
-            Book book = Book.getQueriedBook();
+            Book book = Book.getQueriedBook(scanner);
             library.checkOut(book);
         }
     };
 
     public static final Option RETURN_BOOK = new Option() {
         @Override
-        public void process(Library library) {
+        public void process(Library library, Scanner scanner) {
             print("Enter Title, Author and Year Of Publication, respectively");
-            Book book = Book.getQueriedBook();
+            Book book = Book.getQueriedBook(scanner);
             library.returnBack(book);
         }
     };
 
     public static final Option QUIT = new Option() {
         @Override
-        public void process(Library library) {
+        public void process(Library library, Scanner scanner) {
             System.exit(0);
         }
     };
@@ -45,7 +46,7 @@ public abstract class Option {
         initializeHashMap();
     }
 
-    public abstract void process(Library library);
+    public abstract void process(Library library, Scanner scanner);
 
     private static void initializeHashMap() {
         OptionsMap.put(1, SHOW_BOOKS);

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +15,7 @@ class BookTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Book InputtedBook = Book.getQueriedBook();
+        Book InputtedBook = Book.getQueriedBook(new Scanner(System.in));
         Book ExpectedBook = new Book("A", "Rajesh",2020);
 
         assertEquals(ExpectedBook, InputtedBook);

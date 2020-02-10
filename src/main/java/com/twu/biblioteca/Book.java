@@ -21,8 +21,8 @@ public class Book {
         return title + "\t" + author + "\t" + year;
     }
 
-    public static Book getQueriedBook() {
-        Scanner scanner = new Scanner(System.in);
+    public static Book getQueriedBook(Scanner scanner) {
+
         String title = scanner.next();
         String author = scanner.next();
         int year = parseInt(scanner.next());
