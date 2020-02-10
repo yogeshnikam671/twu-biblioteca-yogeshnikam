@@ -3,33 +3,29 @@ package com.twu.biblioteca;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static java.lang.Integer.*;
+
 public class Book {
-    //TODO: class structure
-        //declaration
-        //construct
-        //public
-        //auto gen
-        //privates
 
     private final String title;
     private final String author;
     private final int year;
 
-    public Book(String bookTitle, String author, int year) {
-        this.title = bookTitle;
+    public Book(String title, String author, int year) {
+        this.title = title;
         this.author = author;
         this.year = year;
-    } //TODO: no need to repeat book. title is sufficient
+    }
 
-    public String getInfo(){
+    public String getInfo() {
         return title + "\t" + author + "\t" + year;
-    } // TODO: why no test.
+    }
 
-    public static Book getInputtedBook() { // TODO: better name
+    public static Book getQueriedBook() {
         Scanner scanner = new Scanner(System.in);
         String title = scanner.next();
         String author = scanner.next();
-        int year = Integer.parseInt( scanner.next() ); // TODO: static imports
+        int year = parseInt(scanner.next());
 
         return new Book(title, author, year);
     }
@@ -45,9 +41,5 @@ public class Book {
     @Override
     public int hashCode() {
         return Objects.hash(title);
-    }
-
-    public String getTitle() { //TODO: not needed
-        return title;
     }
 }

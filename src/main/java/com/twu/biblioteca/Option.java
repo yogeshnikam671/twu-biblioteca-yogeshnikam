@@ -17,7 +17,7 @@ public abstract class Option {
         @Override
         public void process(Library library) {
             System.out.println("Enter Title, Author and Year Of Publication, respectively");
-            Book book = Book.getInputtedBook();
+            Book book = Book.getQueriedBook();
             library.checkOut(book);
         }
     };
@@ -26,7 +26,7 @@ public abstract class Option {
         @Override
         public void process(Library library) {
             System.out.println("Enter Title, Author and Year Of Publication, respectively");
-            Book book = Book.getInputtedBook();
+            Book book = Book.getQueriedBook();
             library.returnBack(book);
         }
     };
