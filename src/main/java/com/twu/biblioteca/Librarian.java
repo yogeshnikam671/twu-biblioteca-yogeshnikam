@@ -16,33 +16,33 @@ public class Librarian {
 
     public List<Book> getCheckedOutBooks() {
         return checkedOutBooks;
-    }
+    } //TODO: do you need this ?
 
-    public void markAsCheckedOut(Book book) {
+    public void markAsCheckedOut(Book book) { //TODO: no tests, method name does not reveal the intention
         checkedOutBooks.add(book);
         notifyAsSuccessfulCheckout();
     }
 
-    public void markAsReturned(Book book) {
+    public void markAsReturned(Book book) { //TODO: no tests, method name does not reveal the intention
         checkedOutBooks.remove(book);
         notifyAsSuccessfulReturn();
     }
 
-    public boolean isValid(Book book) {
+    public boolean isValid(Book book) {  // TODO: name
         return checkedOutBooks.contains(book);
     }
 
     public void notifyAsUnsuccessfulCheckOut() {
         System.out.print(UNSUCCESS_CHECKOUT_MESSAGE);
-    }
+    } // TODO: no tests
 
     public void notifyAsUnsuccessfulReturn() {
         System.out.print(UNSUCCESS_RETURN_MESSAGE);
-    }
+    }  // TODO: no tests
 
     private void notifyAsSuccessfulCheckout() {
         System.out.print(SUCCESS_CHECKOUT_MESSAGE);
-    }
+    } // TODO: think of whos responsibility is printing or displaying
 
     private void notifyAsSuccessfulReturn() {
         System.out.print(SUCCESS_RETURN_MESSAGE);

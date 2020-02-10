@@ -2,14 +2,14 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Library {
     private List<Book> books = new ArrayList<>();
     private Librarian librarian;
-    private int INITIAL_INDEX = 1;
 
     public Library() {
-        books.add(new Book("A", "Charles", 2015));   // pre-existing books
+        books.add(new Book("A", "Charles", 2015));   // pre-existing books, TODO: get rid of comment
         books.add(new Book("B", "Henry", 2017));
         books.add(new Book("C", "Richard", 2012));
     }
@@ -27,10 +27,10 @@ public class Library {
     }
 
     public void showBooks() {
-        int i = INITIAL_INDEX;
+        int counter = 1;
         for (Book book : books) {
-            System.out.println(i + ". " + book.getInfo());
-            i++;
+            System.out.println(counter + ". " + book.getInfo());
+            counter++;
         }
     }
 
