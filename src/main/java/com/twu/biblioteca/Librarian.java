@@ -18,11 +18,11 @@ public class Librarian {
         return checkedOutBooks;
     }
 
-    public void markAsCheckedOut(Book book) { //TODO: no tests, method name does not reveal the intention
+    public void markAsCheckedOut(Book book) {
         checkedOutBooks.add(book);
     }
 
-    public void markAsReturned(Book book) { //TODO: no tests, method name does not reveal the intention
+    public void markAsReturned(Book book) {
         checkedOutBooks.remove(book);
     }
 
@@ -32,11 +32,11 @@ public class Librarian {
 
     public void notifyAsUnsuccessfulCheckOut() {
         System.out.print(UNSUCCESS_CHECKOUT_MESSAGE);
-    } // TODO: no tests
+    }
 
     public void notifyAsUnsuccessfulReturn() {
         System.out.print(UNSUCCESS_RETURN_MESSAGE);
-    }  // TODO: no tests
+    }
 
     public void notifyAsSuccessfulCheckout() {
         System.out.print(SUCCESS_CHECKOUT_MESSAGE);

@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class LibrarianTest {
     @Test
@@ -43,11 +45,9 @@ class LibrarianTest {
         System.setOut(new PrintStream(outContent));
 
         Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
-        Book book = new Book("C", "Richard", 2012);
         String expectedMessage = "Thank You! Enjoy the book";
 
-        library.checkOut(book);
+        librarian.notifyAsSuccessfulCheckout();
 
         assertEquals(expectedMessage, outContent.toString());
     }
@@ -58,11 +58,9 @@ class LibrarianTest {
         System.setOut(new PrintStream(outContent));
 
         Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
-        Book book = new Book("D", "Rajesh", 2012);
         String expectedMessage = "Sorry, that book is not available";
 
-        library.checkOut(book);
+        librarian.notifyAsUnsuccessfulCheckOut();
 
         assertEquals(expectedMessage, outContent.toString());
     }
@@ -101,15 +99,12 @@ class LibrarianTest {
     @Test
     void shouldNotifyCustomerOnSuccessfulReturnOfTheBook() {
         Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
-        Book book = new Book("C", "Richard", 2012);
         String expectedMessage = "Thank you for returning the book";
-        library.checkOut(book);
 
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        library.returnBack(book);
+        librarian.notifyAsSuccessfulReturn();
 
         assertEquals(expectedMessage, outContent.toString());
     }
@@ -117,17 +112,33 @@ class LibrarianTest {
     @Test
     void shouldNotifyCustomerOnUnSuccessfulReturnOfTheBook() {
         Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
-        Book book = new Book("D", "Rajesh", 2012);
         String expectedMessage = "This is not a valid book to return";
-        library.checkOut(book);
 
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        library.returnBack(book);
+        librarian.notifyAsUnsuccessfulReturn();
 
         assertEquals(expectedMessage, outContent.toString());
     }
 
+    @Test
+    void shouldAddTheBookToCheckedOutListWhenMarkedAsCheckedOut() {
+        Librarian librarian = new Librarian();
+        Book book = mock(Book.class);
+
+        librarian.markAsCheckedOut(book);
+
+        assertTrue(librarian.getCheckedOutBooks().contains(book));
+    }
+
+    @Test
+    void shouldRemoveTheBookFromCheckedOutListWhenMarkedAsReturned() {
+        Librarian librarian = new Librarian();
+        Book book = mock(Book.class);
+
+        librarian.markAsReturned(book);
+
+        assertFalse(librarian.getCheckedOutBooks().contains(book));
+    }
 }
