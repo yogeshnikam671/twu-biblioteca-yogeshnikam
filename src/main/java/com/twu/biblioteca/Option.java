@@ -54,6 +54,10 @@ public abstract class Option {
         initializeHashMap();
     }
 
+    public static Option getOption(int selectedOption) {
+        return OptionsMap.get(selectedOption);
+    }
+
     public abstract void process(Library library, Scanner scanner);
 
     private static void initializeHashMap() {
@@ -63,7 +67,4 @@ public abstract class Option {
         OptionsMap.put(4, QUIT);
     }
 
-    public static Option getOption(int selectedOption) {
-        return OptionsMap.get(selectedOption);
-    }
 }
