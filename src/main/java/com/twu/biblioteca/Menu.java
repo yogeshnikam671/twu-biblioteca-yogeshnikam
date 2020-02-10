@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.twu.biblioteca.Printer.*;
 import static java.util.Arrays.*;
 
 public class Menu {
@@ -16,9 +17,9 @@ public class Menu {
     }
 
     public void display() {
-        System.out.println("\nMenu:\n");
+        print("\nMenu:\n");
         for (int i = 0; i < options.size(); i++) {
-            System.out.println(optionId.get(i) + " " + options.get(i));
+            print(optionId.get(i) + " " + options.get(i));
         }
     }
 

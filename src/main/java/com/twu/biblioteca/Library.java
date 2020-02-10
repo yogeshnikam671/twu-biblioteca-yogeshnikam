@@ -3,6 +3,8 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.twu.biblioteca.Printer.*;
+
 public class Library {
     private List<Book> books = new ArrayList<>();
     private Librarian librarian;
@@ -28,7 +30,7 @@ public class Library {
     public void showBooks() {
         int counter = 1;
         for (Book book : books) {
-            System.out.println(counter + ". " + book.getInfo());
+            print(counter + ". " + book.getInfo());
             counter++;
         }
     }

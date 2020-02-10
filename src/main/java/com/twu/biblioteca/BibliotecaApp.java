@@ -14,7 +14,7 @@ public class BibliotecaApp {
 
         new Greeter().greet();
 
-        System.out.println();
+        Printer.print();
 
         Menu menu = new Menu();
 
@@ -25,7 +25,7 @@ public class BibliotecaApp {
 
             String choice = scanner.next();
             if (!menu.isValidOption(choice)) {
-                System.out.println("Please select a valid option");
+                Printer.print("Please select a valid option");
                 continue;
             }
 
@@ -36,6 +36,6 @@ public class BibliotecaApp {
     private static void process(Library library, int choice) {
         Option option = getOption(choice);
         option.process(library);
-        System.out.print("\n\n");
+        Printer.print("\n\n");
     }
 }

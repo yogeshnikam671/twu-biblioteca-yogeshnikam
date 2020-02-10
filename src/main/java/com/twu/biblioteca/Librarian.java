@@ -3,6 +3,8 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.twu.biblioteca.Printer.*;
+
 public class Librarian {
     private List<Book> checkedOutBooks;
     private final static String SUCCESS_CHECKOUT_MESSAGE = "Thank You! Enjoy the book";
@@ -31,19 +33,19 @@ public class Librarian {
     }
 
     public void notifyAsUnsuccessfulCheckOut() {
-        System.out.print(UNSUCCESS_CHECKOUT_MESSAGE);
+        print(UNSUCCESS_CHECKOUT_MESSAGE);
     }
 
     public void notifyAsUnsuccessfulReturn() {
-        System.out.print(UNSUCCESS_RETURN_MESSAGE);
+        print(UNSUCCESS_RETURN_MESSAGE);
     }
 
     public void notifyAsSuccessfulCheckout() {
-        System.out.print(SUCCESS_CHECKOUT_MESSAGE);
-    } // TODO: think of whos responsibility is printing or displaying
+        print(SUCCESS_CHECKOUT_MESSAGE);
+    }
 
     public void notifyAsSuccessfulReturn() {
-        System.out.print(SUCCESS_RETURN_MESSAGE);
+        print(SUCCESS_RETURN_MESSAGE);
     }
 
 }

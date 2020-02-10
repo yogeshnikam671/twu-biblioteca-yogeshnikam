@@ -2,6 +2,8 @@ package com.twu.biblioteca;
 
 import java.util.HashMap;
 
+import static com.twu.biblioteca.Printer.*;
+
 public abstract class Option {
 
     private static HashMap<Integer, Option> OptionsMap;
@@ -16,7 +18,7 @@ public abstract class Option {
     public static final Option CHECKOUT_BOOK = new Option() {
         @Override
         public void process(Library library) {
-            System.out.println("Enter Title, Author and Year Of Publication, respectively");
+            print("Enter Title, Author and Year Of Publication, respectively");
             Book book = Book.getQueriedBook();
             library.checkOut(book);
         }
@@ -25,7 +27,7 @@ public abstract class Option {
     public static final Option RETURN_BOOK = new Option() {
         @Override
         public void process(Library library) {
-            System.out.println("Enter Title, Author and Year Of Publication, respectively");
+            print("Enter Title, Author and Year Of Publication, respectively");
             Book book = Book.getQueriedBook();
             library.returnBack(book);
         }

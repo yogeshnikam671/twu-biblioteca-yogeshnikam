@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -12,6 +14,21 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 class LibrarianTest {
+
+    private PrintStream sysOut;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @BeforeEach
+    public void setUpStreams() {
+        sysOut = System.out;
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void revertStreams() {
+        System.setOut(sysOut);
+    }
+
     @Test
     void shouldBeAbleToPrepareACheckedOutBookForCollection() {
         Librarian librarian = new Librarian();
@@ -40,11 +57,8 @@ class LibrarianTest {
 
     @Test
     void shouldNotifyCustomerOnSuccessfulCheckoutOfTheBook() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
         Librarian librarian = new Librarian();
-        String expectedMessage = "Thank You! Enjoy the book";
+        String expectedMessage = "Thank You! Enjoy the book\n";
 
         librarian.notifyAsSuccessfulCheckout();
 
@@ -53,11 +67,8 @@ class LibrarianTest {
 
     @Test
     void shouldNotifyCustomerOnUnSuccessfulCheckoutOfTheBook() {
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
         Librarian librarian = new Librarian();
-        String expectedMessage = "Sorry, that book is not available";
+        String expectedMessage = "Sorry, that book is not available\n";
 
         librarian.notifyAsUnsuccessfulCheckOut();
 
@@ -98,10 +109,7 @@ class LibrarianTest {
     @Test
     void shouldNotifyCustomerOnSuccessfulReturnOfTheBook() {
         Librarian librarian = new Librarian();
-        String expectedMessage = "Thank you for returning the book";
-
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        String expectedMessage = "Thank you for returning the book\n";
 
         librarian.notifyAsSuccessfulReturn();
 
@@ -111,10 +119,7 @@ class LibrarianTest {
     @Test
     void shouldNotifyCustomerOnUnSuccessfulReturnOfTheBook() {
         Librarian librarian = new Librarian();
-        String expectedMessage = "This is not a valid book to return";
-
-        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
+        String expectedMessage = "This is not a valid book to return\n";
 
         librarian.notifyAsUnsuccessfulReturn();
 
