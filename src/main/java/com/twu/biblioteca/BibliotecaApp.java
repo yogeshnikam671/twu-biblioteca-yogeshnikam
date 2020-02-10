@@ -9,18 +9,15 @@ import static java.lang.Integer.parseInt;
 
 public class BibliotecaApp {
     private static Scanner scanner;
-    private static Librarian librarian;
     private static Library library;
     private Menu menu;
 
-    public BibliotecaApp(Scanner scanner, Library library, Librarian librarian, Menu menu) {
+    public BibliotecaApp(Scanner scanner, Library library, Menu menu) {
         BibliotecaApp.scanner = scanner;
         BibliotecaApp.library = library;
-        BibliotecaApp.librarian = librarian;
         this.menu = menu;
     }
 
-    @SuppressWarnings("InfiniteLoopStatement")
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -28,12 +25,13 @@ public class BibliotecaApp {
         Library library = new Library(librarian);
         Menu menu = new Menu();
 
-        BibliotecaApp app = new BibliotecaApp(scanner, library, librarian, menu);
+        BibliotecaApp app = new BibliotecaApp(scanner, library, menu);
 
         app.start();
     }
 
-    public void start(){
+    @SuppressWarnings("InfiniteLoopStatement")
+    public void start() {
         greet();
         print();
 
