@@ -20,23 +20,32 @@ public class Librarian {
 
     public void markAsCheckedOut(Book book) {
         checkedOutBooks.add(book);
-        System.out.print(SUCCESS_CHECKOUT_MESSAGE);
-    }
-
-    public void notifyAsUnsuccessfulCheckOut() {
-        System.out.print(UNSUCCESS_CHECKOUT_MESSAGE);
+        notifyAsSuccessfulCheckout();
     }
 
     public void markAsReturned(Book book) {
         checkedOutBooks.remove(book);
-        System.out.print(SUCCESS_RETURN_MESSAGE);
+        notifyAsSuccessfulReturn();
     }
 
     public boolean isValid(Book book) {
         return checkedOutBooks.contains(book);
     }
 
+    public void notifyAsUnsuccessfulCheckOut() {
+        System.out.print(UNSUCCESS_CHECKOUT_MESSAGE);
+    }
+
     public void notifyAsUnsuccessfulReturn() {
         System.out.print(UNSUCCESS_RETURN_MESSAGE);
     }
+
+    private void notifyAsSuccessfulCheckout(){
+        System.out.print(SUCCESS_CHECKOUT_MESSAGE);
+    }
+
+    private void notifyAsSuccessfulReturn(){
+        System.out.print(SUCCESS_RETURN_MESSAGE);
+    }
+
 }
