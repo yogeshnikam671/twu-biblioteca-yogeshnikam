@@ -15,7 +15,7 @@ class BookTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Book InputtedBook = Book.getQueriedBook(new Scanner(System.in));
+        Book InputtedBook = Book.getQueriedBook("A", "Rajesh", 2020);
         Book ExpectedBook = new Book("A", "Rajesh",2020);
 
         assertEquals(ExpectedBook, InputtedBook);

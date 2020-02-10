@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
 import java.util.Objects;
-import java.util.Scanner;
-
-import static java.lang.Integer.*;
 
 public class Book {
 
@@ -21,12 +18,7 @@ public class Book {
         return title + "\t" + author + "\t" + year;
     }
 
-    public static Book getQueriedBook(Scanner scanner) {
-
-        String title = scanner.next();
-        String author = scanner.next();
-        int year = parseInt(scanner.next());
-
+    public static Book getQueriedBook(String title, String author, int year) {
         return new Book(title, author, year);
     }
 

@@ -3,7 +3,9 @@ package com.twu.biblioteca;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import static com.twu.biblioteca.Book.*;
 import static com.twu.biblioteca.Printer.*;
+import static java.lang.Integer.parseInt;
 
 public abstract class Option {
 
@@ -20,7 +22,10 @@ public abstract class Option {
         @Override
         public void process(Library library, Scanner scanner) {
             print("Enter Title, Author and Year Of Publication, respectively");
-            Book book = Book.getQueriedBook(scanner);
+            String title = scanner.next();
+            String author = scanner.next();
+            int year = parseInt(scanner.next());
+            Book book = getQueriedBook(title, author, year);
             library.checkOut(book);
         }
     };
@@ -29,7 +34,10 @@ public abstract class Option {
         @Override
         public void process(Library library, Scanner scanner) {
             print("Enter Title, Author and Year Of Publication, respectively");
-            Book book = Book.getQueriedBook(scanner);
+            String title = scanner.next();
+            String author = scanner.next();
+            int year = parseInt(scanner.next());
+            Book book = getQueriedBook(title, author, year);
             library.returnBack(book);
         }
     };
