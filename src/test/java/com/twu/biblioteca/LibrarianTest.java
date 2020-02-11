@@ -145,4 +145,5 @@ class LibrarianTest {
 
         assertFalse(librarian.getCheckedOut(ItemType.BOOK).contains(book));
     }
+
 }

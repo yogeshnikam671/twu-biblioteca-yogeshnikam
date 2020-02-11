@@ -58,4 +58,30 @@ class LibraryTest {
         assertTrue(library.get(ItemType.BOOK).contains(book));
     }
 
+    @Test
+    void shouldBeAbleToShowListOfMovies() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        Library library = new Library(new Librarian());
+
+        library.show(ItemType.MOVIE);
+
+       assertEquals("1. Dabangg\t2015\tRajesh\t10\n2. Bharat\t2019\tSuresh\t1\n", outContent.toString());
+    }
+
+    @Test
+    void shouldAllowTheCustomerToCheckOutAMovie() {
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+
+        List<Movie> movies = new ArrayList<>();
+        movies.add(new Movie("Dabangg","2015", "Rajesh","10" ));
+
+        Movie movie = new Movie("Bharat","2019","Suresh","1");
+
+        library.checkOut(movie, ItemType.MOVIE);
+
+        assertEquals(movies, library.get(ItemType.MOVIE));
+    }
 }
