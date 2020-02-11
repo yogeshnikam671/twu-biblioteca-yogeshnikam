@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import static com.twu.biblioteca.Book.*;
 import static com.twu.biblioteca.Printer.*;
-import static java.lang.Integer.parseInt;
 
 public abstract class Option {
 

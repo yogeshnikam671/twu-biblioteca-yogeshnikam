@@ -1,11 +1,10 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static com.twu.biblioteca.Printer.*;
-import static java.util.Arrays.*;
+import static com.twu.biblioteca.Printer.print;
+import static java.util.Arrays.asList;
 
 public class Menu {
     private List<Integer> optionId;
@@ -18,8 +17,8 @@ public class Menu {
 
     public void display() {
         print("\nMenu:\n");
-        for (int i = 0; i < options.size(); i++) {
-            print(optionId.get(i) + " " + options.get(i));
+        for (int index = 0; index < options.size(); index++) {
+            print(optionId.get(index) + " " + options.get(index));
         }
     }
 
