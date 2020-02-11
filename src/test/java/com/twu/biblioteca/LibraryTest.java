@@ -16,15 +16,17 @@ class LibraryTest {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        Library library = new Library();
         List<Book> books = new ArrayList<>();
         books.add(new Book("A", "Charles", "2015"));
         books.add(new Book("B", "Henry", "2017"));
         books.add(new Book("C", "Richard", "2012"));
 
-        library.showBooks();
+        Library library = new Library(new Librarian());
 
-        assertEquals(books, library.getBooks());
+
+        library.show(ItemType.BOOK);
+
+        assertEquals(books, library.get(ItemType.BOOK));
         assertEquals("1. A\tCharles\t2015\n2. B\tHenry\t2017\n3. C\tRichard\t2012\n", outContent.toString());
     }
 
@@ -39,9 +41,9 @@ class LibraryTest {
 
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book);
+        library.checkOut(book, ItemType.BOOK);
 
-        assertEquals(books, library.getBooks());
+        assertEquals(books, library.get(ItemType.BOOK));
     }
 
     @Test
@@ -50,10 +52,10 @@ class LibraryTest {
         Library library = new Library(librarian);
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book);
-        library.returnBack(book);
+        library.checkOut(book, ItemType.BOOK);
+        library.returnBack(book, ItemType.BOOK);
 
-        assertTrue(library.getBooks().contains(book));
+        assertTrue(library.get(ItemType.BOOK).contains(book));
     }
 
 }

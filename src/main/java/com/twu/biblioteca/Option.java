@@ -13,7 +13,7 @@ public abstract class Option {
     public static final Option SHOW_BOOKS = new Option() {
         @Override
         public void process(Library library, Scanner scanner) {
-            library.showBooks();
+            library.show(ItemType.BOOK);
         }
     };
 
@@ -25,7 +25,7 @@ public abstract class Option {
             String author = scanner.next();
             String year = scanner.next();
             Book book = getQueriedBook(title, author, year);
-            library.checkOut(book);
+            library.checkOut(book, ItemType.BOOK);
         }
     };
 
@@ -37,7 +37,7 @@ public abstract class Option {
             String author = scanner.next();
             String year = scanner.next();
             Book book = getQueriedBook(title, author, year);
-            library.returnBack(book);
+            library.returnBack(book, ItemType.BOOK);
         }
     };
 

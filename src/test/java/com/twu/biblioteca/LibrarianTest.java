@@ -35,9 +35,9 @@ class LibrarianTest {
         Library library = new Library(librarian);
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book);
+        library.checkOut(book, ItemType.BOOK);
 
-        assertTrue(librarian.getCheckedOutBooks().contains(book));
+        assertTrue(librarian.getCheckedOut(ItemType.BOOK).contains(book));
     }
 
     @Test
@@ -48,11 +48,11 @@ class LibrarianTest {
         Book book2 = new Book("A", "Charles", "2015");
         List<Book> checkedOutBooks = new ArrayList<>(asList(book1, book2));
 
-        library.checkOut(book1);
-        library.checkOut(book2);
+        library.checkOut(book1, ItemType.BOOK);
+        library.checkOut(book2, ItemType.BOOK);
 
 
-        assertEquals(checkedOutBooks, librarian.getCheckedOutBooks());
+        assertEquals(checkedOutBooks, librarian.getCheckedOut(ItemType.BOOK));
     }
 
     @Test
@@ -81,10 +81,10 @@ class LibrarianTest {
         Library library = new Library(librarian);
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book);
-        library.returnBack(book);
+        library.checkOut(book, ItemType.BOOK);
+        library.returnBack(book,ItemType.BOOK);
 
-        assertFalse(librarian.getCheckedOutBooks().contains(book));
+        assertFalse(librarian.getCheckedOut(ItemType.BOOK).contains(book));
     }
 
     @Test
@@ -93,9 +93,9 @@ class LibrarianTest {
         Library library = new Library(librarian);
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book);
+        library.checkOut(book, ItemType.BOOK);
 
-        assertTrue(librarian.isCheckedOut(book));
+        assertTrue(librarian.isCheckedOut(book, ItemType.BOOK));
     }
 
     @Test
@@ -103,7 +103,7 @@ class LibrarianTest {
         Librarian librarian = new Librarian();
         Book book = new Book("D", "Rajesh", "2012");
 
-        assertFalse(librarian.isCheckedOut(book));
+        assertFalse(librarian.isCheckedOut(book, ItemType.BOOK));
     }
 
     @Test
@@ -131,9 +131,9 @@ class LibrarianTest {
         Librarian librarian = new Librarian();
         Book book = mock(Book.class);
 
-        librarian.markAsCheckedOut(book);
+        librarian.markAsCheckedOut(book, ItemType.BOOK);
 
-        assertTrue(librarian.getCheckedOutBooks().contains(book));
+        assertTrue(librarian.getCheckedOut(ItemType.BOOK).contains(book));
     }
 
     @Test
@@ -141,8 +141,8 @@ class LibrarianTest {
         Librarian librarian = new Librarian();
         Book book = mock(Book.class);
 
-        librarian.markAsReturned(book);
+        librarian.markAsReturned(book, ItemType.BOOK);
 
-        assertFalse(librarian.getCheckedOutBooks().contains(book));
+        assertFalse(librarian.getCheckedOut(ItemType.BOOK).contains(book));
     }
 }
