@@ -15,15 +15,15 @@ class BookTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        Book InputtedBook = Book.getQueriedBook("A", "Rajesh", 2020);
-        Book ExpectedBook = new Book("A", "Rajesh",2020);
+        Book InputtedBook = Book.getQueriedBook("A", "Rajesh", "2020");
+        Book ExpectedBook = new Book("A", "Rajesh","2020");
 
         assertEquals(ExpectedBook, InputtedBook);
     }
 
     @Test
     void shouldGetInformationOfBook() {
-        Book book = new Book("A", "Ramesh",2020);
+        Book book = new Book("A", "Ramesh","2020");
         String expectedInfo = "A\tRamesh\t2020";
         assertEquals(expectedInfo, book.getInfo());
     }

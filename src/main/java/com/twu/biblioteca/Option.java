@@ -24,7 +24,7 @@ public abstract class Option {
             print("Enter Title, Author and Year Of Publication, respectively");
             String title = scanner.next();
             String author = scanner.next();
-            int year = parseInt(scanner.next());
+            String year = scanner.next();
             Book book = getQueriedBook(title, author, year);
             library.checkOut(book);
         }
@@ -36,7 +36,7 @@ public abstract class Option {
             print("Enter Title, Author and Year Of Publication, respectively");
             String title = scanner.next();
             String author = scanner.next();
-            int year = parseInt(scanner.next());
+            String year = scanner.next();
             Book book = getQueriedBook(title, author, year);
             library.returnBack(book);
         }

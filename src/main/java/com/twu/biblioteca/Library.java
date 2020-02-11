@@ -53,9 +53,9 @@ public class Library {
     }
 
     private void instantiateWithPreExistingBooks(){
-        books.add(new Book("A", "Charles", 2015));
-        books.add(new Book("B", "Henry", 2017));
-        books.add(new Book("C", "Richard", 2012));
+        books.add(new Book("A", "Charles", "2015"));
+        books.add(new Book("B", "Henry", "2017"));
+        books.add(new Book("C", "Richard", "2012"));
     }
 }
 

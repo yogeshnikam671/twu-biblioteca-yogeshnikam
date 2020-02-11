@@ -6,9 +6,9 @@ public class Book {
 
     private final String title;
     private final String author;
-    private final int year;
+    private final String year;
 
-    public Book(String title, String author, int year) {
+    public Book(String title, String author, String year) {
         this.title = title;
         this.author = author;
         this.year = year;
@@ -18,7 +18,7 @@ public class Book {
         return title + "\t" + author + "\t" + year;
     }
 
-    public static Book getQueriedBook(String title, String author, int year) {
+    public static Book getQueriedBook(String title, String author, String year) {
         return new Book(title, author, year);
     }
 
@@ -27,7 +27,7 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return title.equals(book.title) && author.equals(book.author) && year == book.year;
+        return title.equals(book.title) && author.equals(book.author) && year.equals(book.year);
     }
 
     @Override

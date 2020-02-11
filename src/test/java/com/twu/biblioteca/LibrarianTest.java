@@ -33,7 +33,7 @@ class LibrarianTest {
     void shouldBeAbleToPrepareACheckedOutBookForCollection() {
         Librarian librarian = new Librarian();
         Library library = new Library(librarian);
-        Book book = new Book("C", "Richard", 2012);
+        Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book);
 
@@ -44,8 +44,8 @@ class LibrarianTest {
     void shouldBeAbleToPrepareAListOfCheckedOutBooksForCollection() {
         Librarian librarian = new Librarian();
         Library library = new Library(librarian);
-        Book book1 = new Book("C", "Richard", 2012);
-        Book book2 = new Book("A", "Charles", 2015);
+        Book book1 = new Book("C", "Richard", "2012");
+        Book book2 = new Book("A", "Charles", "2015");
         List<Book> checkedOutBooks = new ArrayList<>(asList(book1, book2));
 
         library.checkOut(book1);
@@ -79,7 +79,7 @@ class LibrarianTest {
     void shouldRemoveTheBookFromCheckedOutListWhenItIsReturned() {
         Librarian librarian = new Librarian();
         Library library = new Library(librarian);
-        Book book = new Book("C", "Richard", 2012);
+        Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book);
         library.returnBack(book);
@@ -91,7 +91,7 @@ class LibrarianTest {
     void shouldBeAbleToCheckIfTheCustomerIsReturningAValidBook() {
         Librarian librarian = new Librarian();
         Library library = new Library(librarian);
-        Book book = new Book("C", "Richard", 2012);
+        Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book);
 
@@ -101,7 +101,7 @@ class LibrarianTest {
     @Test
     void shouldBeAbleToCheckIfTheCustomerIsReturningAnInValidBook() {
         Librarian librarian = new Librarian();
-        Book book = new Book("D", "Rajesh", 2012);
+        Book book = new Book("D", "Rajesh", "2012");
 
         assertFalse(librarian.isCheckedOut(book));
     }

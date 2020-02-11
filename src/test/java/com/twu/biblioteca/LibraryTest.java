@@ -18,9 +18,9 @@ class LibraryTest {
 
         Library library = new Library();
         List<Book> books = new ArrayList<>();
-        books.add(new Book("A", "Charles", 2015));
-        books.add(new Book("B", "Henry", 2017));
-        books.add(new Book("C", "Richard", 2012));
+        books.add(new Book("A", "Charles", "2015"));
+        books.add(new Book("B", "Henry", "2017"));
+        books.add(new Book("C", "Richard", "2012"));
 
         library.showBooks();
 
@@ -34,10 +34,10 @@ class LibraryTest {
         Library library = new Library(librarian);
 
         List<Book> books = new ArrayList<>();
-        books.add(new Book("A", "Charles", 2015));
-        books.add(new Book("B", "Henry", 2017));
+        books.add(new Book("A", "Charles", "2015"));
+        books.add(new Book("B", "Henry", "2017"));
 
-        Book book = new Book("C", "Richard", 2012);
+        Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book);
 
@@ -48,7 +48,7 @@ class LibraryTest {
     void shouldAllowTheCustomerToReturnABook() {
         Librarian librarian = new Librarian();
         Library library = new Library(librarian);
-        Book book = new Book("C", "Richard", 2012);
+        Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book);
         library.returnBack(book);
