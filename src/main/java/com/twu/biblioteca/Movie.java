@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class Movie {
+public class Movie implements Item {
     private final String name;
     private final String year;
     private final String director;

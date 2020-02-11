@@ -2,7 +2,7 @@ package com.twu.biblioteca;
 
 import java.util.Objects;
 
-public class Book {
+public class Book implements Item {
 
     private final String title;
     private final String author;
