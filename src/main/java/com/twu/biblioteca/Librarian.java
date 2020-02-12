@@ -41,7 +41,7 @@ public class Librarian {
 
         checkedOutItems.get(itemType).remove(item);
 
-        if(user.length != 0)
+        if(user.length != 0 && index != -1)
             accountableUsers.remove(index);
     }
 
