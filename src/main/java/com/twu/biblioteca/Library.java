@@ -66,6 +66,10 @@ public class Library {
         librarian.notifyAsUnsuccessfulReturn();
     }
 
+    public List<Book> getBooksCheckedOutBy(User user){
+        return librarian.getBooksCheckedOutBy(user);
+    }
+
     public boolean isValid(User user) {
         if(users.contains(user))
             return true;

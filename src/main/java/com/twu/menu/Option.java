@@ -8,6 +8,7 @@ import com.twu.items.ItemType;
 import com.twu.items.Movie;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 import static com.twu.items.Book.*;
@@ -89,6 +90,45 @@ public abstract class Option {
         }
     };
 
+    public static final Option VIEW_CHECKED_OUT_BOOKS = new Option() {
+        @Override
+        public void process(Library library, Scanner scanner, Printer printer) {
+            printer.print("Enter Library Number and Password, respectively");
+            String libraryNumber = scanner.next();
+            String password = scanner.next();
+
+            if(!library.isValid(new User(libraryNumber, password))){
+                printer.print("Invalid User !");
+                return;
+
+            }
+
+            User user = library.getQueriedUser(new User(libraryNumber, password));
+            String input = "1";
+            while(input.equals("1")) {
+                printer.print("1. See Profile Information\n2. Continue With Viewing Checked Out Books\n3. Go Back");
+                input = scanner.next();
+                if(input.equals("1"))
+                    user.displayInfo(printer);
+            }
+
+            if(input.equals("3")) return;
+
+
+            List<Book> checkedOutBooks =  library.getBooksCheckedOutBy(user);
+
+            if(checkedOutBooks.size() == 0){
+                printer.print("No books are checked out by you\n");
+                return;
+            }
+
+            printer.print("Books Checked Out :\n");
+            for(Book book : checkedOutBooks){
+                printer.print(book.getInfo());
+            }
+        }
+    };
+
     public static final Option QUIT = new Option() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer) {
@@ -129,9 +169,11 @@ public abstract class Option {
         OptionsMap.put(1, SHOW_BOOKS);
         OptionsMap.put(2, CHECKOUT_BOOK);
         OptionsMap.put(3, RETURN_BOOK);
-        OptionsMap.put(4, SHOW_MOVIES);
-        OptionsMap.put(5, CHECKOUT_MOVIE);
-        OptionsMap.put(6, QUIT);
+        OptionsMap.put(4, VIEW_CHECKED_OUT_BOOKS);
+
+        OptionsMap.put(5, SHOW_MOVIES);
+        OptionsMap.put(6, CHECKOUT_MOVIE);
+        OptionsMap.put(7, QUIT);
     }
 
 }
