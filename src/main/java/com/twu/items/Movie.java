@@ -35,6 +35,6 @@ public class Movie implements Item {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, year, director, rating);
+        return Objects.hash(name, year);
     }
 }

@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.twu.biblioteca.Printer.*;
-
 public class Library {
 
     private List<User> users;
@@ -71,9 +69,7 @@ public class Library {
     }
 
     public boolean isValid(User user) {
-        if(users.contains(user))
-            return true;
-        return false;
+        return users.contains(user);
     }
 
     public User getQueriedUser(User user) {
