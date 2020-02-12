@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import static com.twu.biblioteca.Book.*;
 import static com.twu.biblioteca.Printer.*;
+import static com.twu.biblioteca.User.*;
 
 public abstract class Option {
 
@@ -20,6 +21,13 @@ public abstract class Option {
     public static final Option CHECKOUT_BOOK = new Option() {
         @Override
         public void process(Library library, Scanner scanner) {
+            print("Enter Library Number and Password, respectively");
+            String libraryNumber = scanner.next();
+            String password = scanner.next();
+            User user = getQueriedUser(libraryNumber, password);
+            if(!library.isValid(user))
+                return;
+
             print("Enter Title, Author and Year Of Publication, respectively");
             String title = scanner.next();
             String author = scanner.next();
@@ -32,6 +40,13 @@ public abstract class Option {
     public static final Option RETURN_BOOK = new Option() {
         @Override
         public void process(Library library, Scanner scanner) {
+            print("Enter Library Number and Password, respectively");
+            String libraryNumber = scanner.next();
+            String password = scanner.next();
+            User user = getQueriedUser(libraryNumber, password);
+            if(!library.isValid(user))
+                return;
+
             print("Enter Title, Author and Year Of Publication, respectively");
             String title = scanner.next();
             String author = scanner.next();

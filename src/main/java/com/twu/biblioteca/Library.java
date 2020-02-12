@@ -33,7 +33,6 @@ public class Library {
     }
 
     public void checkOut(Item item, ItemType itemType) {
-
         List<Item> list = items.get(itemType);
         if (list.contains(item)) {
             list.remove(item);
@@ -46,7 +45,6 @@ public class Library {
     }
 
     public void returnBack(Item item, ItemType itemType) {
-
         List<Item> list = items.get(itemType);
         if (librarian.isCheckedOut(item, itemType)) {
             list.add(item);

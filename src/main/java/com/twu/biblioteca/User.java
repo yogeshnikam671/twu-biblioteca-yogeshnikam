@@ -11,6 +11,10 @@ public class User {
         this.password = password;
     }
 
+    public static User getQueriedUser(String libraryNumber, String password) {
+        return new User(libraryNumber, password);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
