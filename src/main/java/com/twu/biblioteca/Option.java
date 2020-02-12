@@ -52,7 +52,7 @@ public abstract class Option {
             String author = scanner.next();
             String year = scanner.next();
             Book book = getQueriedBook(title, author, year);
-            library.returnBack(book, ItemType.BOOK);
+            library.returnBack(book, ItemType.BOOK, user);
         }
     };
 
