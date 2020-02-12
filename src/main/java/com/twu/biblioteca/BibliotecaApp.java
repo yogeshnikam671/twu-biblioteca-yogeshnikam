@@ -45,7 +45,7 @@ public class BibliotecaApp {
 
             String choice = scanner.next();
             if (!menu.isValidOption(choice)) {
-                printer.print("Please select a valid option");
+                printer.print("Please select a valid option\n");
                 continue;
             }
 

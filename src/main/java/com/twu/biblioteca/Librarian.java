@@ -13,10 +13,10 @@ public class Librarian {
     private List<User> accountableUsers;
     private Printer printer;
 
-    private final static String SUCCESS_CHECKOUT_MESSAGE = "Thank You! Enjoy the book";
-    private final static String UNSUCCESS_CHECKOUT_MESSAGE = "Sorry, that book is not available";
-    private final static String SUCCESS_RETURN_MESSAGE = "Thank you for returning the book";
-    private final static String UNSUCCESS_RETURN_MESSAGE = "This is not a valid book to return";
+    private final static String SUCCESS_CHECKOUT_MESSAGE = "Thank You! Enjoy the book\n";
+    private final static String UNSUCCESS_CHECKOUT_MESSAGE = "Sorry, that book is not available\n";
+    private final static String SUCCESS_RETURN_MESSAGE = "Thank you for returning the book\n";
+    private final static String UNSUCCESS_RETURN_MESSAGE = "This is not a valid book to return\n";
 
     public Librarian(Printer printer) {
         accountableUsers = new ArrayList<>();
@@ -48,7 +48,7 @@ public class Librarian {
         List<Item> books = checkedOutItems.get(ItemType.BOOK);
         if(accountableUsers.indexOf(user) != books.indexOf(book))
         {
-            printer.print("You are not accountable to return this book\n");
+            printer.print("Invalid Return Request\n");
             return false;
         }
         return true;

@@ -63,7 +63,7 @@ class LibrarianTest {
     @Test
     void shouldNotifyCustomerOnSuccessfulCheckoutOfTheBook() {
         Librarian librarian = new Librarian(printer);
-        String expectedMessage = "Thank You! Enjoy the book\n";
+        String expectedMessage = "Thank You! Enjoy the book\n\n";
 
         librarian.notifyAsSuccessfulCheckout();
 
@@ -73,7 +73,7 @@ class LibrarianTest {
     @Test
     void shouldNotifyCustomerOnUnSuccessfulCheckoutOfTheBook() {
         Librarian librarian = new Librarian(printer);
-        String expectedMessage = "Sorry, that book is not available\n";
+        String expectedMessage = "Sorry, that book is not available\n\n";
 
         librarian.notifyAsUnsuccessfulCheckOut();
 
@@ -114,7 +114,7 @@ class LibrarianTest {
     @Test
     void shouldNotifyCustomerOnSuccessfulReturnOfTheBook() {
         Librarian librarian = new Librarian(printer);
-        String expectedMessage = "Thank you for returning the book\n";
+        String expectedMessage = "Thank you for returning the book\n\n";
 
         librarian.notifyAsSuccessfulReturn();
 
@@ -124,7 +124,7 @@ class LibrarianTest {
     @Test
     void shouldNotifyCustomerOnUnSuccessfulReturnOfTheBook() {
         Librarian librarian = new Librarian(printer);
-        String expectedMessage = "This is not a valid book to return\n";
+        String expectedMessage = "This is not a valid book to return\n\n";
 
         librarian.notifyAsUnsuccessfulReturn();
 
@@ -166,7 +166,7 @@ class LibrarianTest {
         library.checkOut(book, ItemType.BOOK, user1);
         library.returnBack(book, ItemType.BOOK, user2);
 
-        assertEquals("Thank You! Enjoy the book\nYou are not accountable to return this book\n\n", outContent.toString());
+        assertEquals("Thank You! Enjoy the book\n\nInvalid Return Request\n\n", outContent.toString());
     }
 
     @Test

@@ -30,6 +30,6 @@ class UserTest {
 
         user.displayInfo(printer);
 
-        assertEquals("Name: " + "A" + "\tEmail: " + "A@mail.com" + "\tPhone: " + "1234567\n", outContent.toString());
+        assertEquals("Name: " + "A" + "\tEmail: " + "A@mail.com" + "\tPhone: " + "1234567\n\n", outContent.toString());
     }
 }

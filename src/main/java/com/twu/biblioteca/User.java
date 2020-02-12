@@ -39,6 +39,6 @@ public class User {
     }
 
     public void displayInfo(Printer printer) {
-        printer.print("Name: " + name + "\tEmail: " + email + "\tPhone: " + phoneNumber);
+        printer.print("Name: " + name + "\tEmail: " + email + "\tPhone: " + phoneNumber + "\n");
     }
 }

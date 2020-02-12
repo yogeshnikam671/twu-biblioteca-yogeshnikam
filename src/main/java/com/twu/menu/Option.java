@@ -122,9 +122,11 @@ public abstract class Option {
                 return;
             }
 
-            printer.print("Books Checked Out :\n");
+            printer.print("\nBooks Checked Out :\n");
+            int counter = 1;
             for(Book book : checkedOutBooks){
-                printer.print(book.getInfo());
+                printer.print(counter + ". " +book.getInfo());
+                counter++;
             }
         }
     };
