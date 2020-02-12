@@ -2,6 +2,9 @@ package com.twu.biblioteca;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
@@ -14,5 +17,17 @@ class UserTest {
         User user2 = new User("345-6789", "pass");
 
         assertNotEquals(user1, user2);
+    }
+
+    @Test
+    void shouldBeAbleToDisplayUserInformation() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        Library library = new Library(new Librarian());
+        User user = library.getQueriedUser(new User("123-4567", "dada"));
+
+        user.displayInfo();
+
+        assertEquals("Name: " + "A" + "\tEmail: " + "A@mail.com" + "\tPhone: " + "1234567\n", outContent.toString());
     }
 }
