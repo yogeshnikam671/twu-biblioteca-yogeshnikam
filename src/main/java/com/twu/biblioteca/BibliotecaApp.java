@@ -1,9 +1,12 @@
 package com.twu.biblioteca;
 
+import com.twu.menu.Menu;
+import com.twu.menu.Option;
+
 import java.util.Scanner;
 
 import static com.twu.biblioteca.Greeter.*;
-import static com.twu.biblioteca.Option.getOption;
+import static com.twu.menu.Option.getOption;
 import static com.twu.biblioteca.Printer.*;
 import static java.lang.Integer.parseInt;
 

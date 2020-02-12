@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.items;
 
 import java.util.Objects;
 
@@ -8,7 +8,7 @@ public class Movie implements Item {
     private String director;
     private String rating;
 
-    Movie(String name, String year, String director, String rating){
+    public Movie(String name, String year, String director, String rating){
         this.name = name;
         this.year = year;
         this.director = director;

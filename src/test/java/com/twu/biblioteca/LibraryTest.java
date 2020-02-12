@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.items.Book;
+import com.twu.items.ItemType;
+import com.twu.items.Movie;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;

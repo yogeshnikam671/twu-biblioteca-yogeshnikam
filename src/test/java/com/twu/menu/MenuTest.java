@@ -1,15 +1,11 @@
-package com.twu.biblioteca;
+package com.twu.menu;
 
-import com.twu.biblioteca.Menu;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 class MenuTest {
     @Test

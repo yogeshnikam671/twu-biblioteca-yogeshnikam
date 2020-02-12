@@ -1,11 +1,16 @@
-package com.twu.biblioteca;
+package com.twu.menu;
+
+import com.twu.biblioteca.Library;
+import com.twu.biblioteca.User;
+import com.twu.items.Book;
+import com.twu.items.ItemType;
+import com.twu.items.Movie;
 
 import java.util.HashMap;
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Book.*;
+import static com.twu.items.Book.*;
 import static com.twu.biblioteca.Printer.*;
-import static com.twu.biblioteca.User.*;
 
 public abstract class Option {
 

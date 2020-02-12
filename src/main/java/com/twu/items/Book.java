@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.items;
 
 import java.util.Objects;
 
