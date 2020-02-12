@@ -1,15 +1,23 @@
 package com.twu.menu;
 
 import com.twu.biblioteca.Printer;
-import java.util.List;
 
-import static java.util.Arrays.asList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Menu {
     private final List<String> options;
 
     public Menu() {
-        options = asList("List of books", "Checkout a book", "Return a book","View checked-out books","List of movies", "Checkout a movie","Quit the application");
+        options = new ArrayList<>();
+        options.add("List of books");
+        options.add("Checkout a book");
+        options.add("Return a book");
+        options.add("View checked-out books");
+
+        options.add("List of movies");
+        options.add("Checkout a movie");
+        options.add("Quit the application");
     }
 
     public void display(Printer printer) {
