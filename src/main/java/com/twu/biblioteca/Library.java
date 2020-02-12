@@ -89,9 +89,9 @@ public class Library {
 
     private void instantiateWithPreExistingUsers() {
         users = new ArrayList<>();
-        users.add(new User("123-4567", "dada"));
-        users.add(new User("123-4568","dada1"));
-        users.add(new User("123-4569","dada2"));
+        users.add(new User("123-4567", "dada", "A","A@mail.com", "1234567"));
+        users.add(new User("123-4568","dada1", "B","B@mail.com", "1234568"));
+        users.add(new User("123-4569","dada2", "C","C@mail.com", "1234569"));
     }
 
 }
