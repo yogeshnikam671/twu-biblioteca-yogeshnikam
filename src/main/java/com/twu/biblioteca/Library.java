@@ -69,6 +69,11 @@ public class Library {
         return users.get(users.indexOf(user));
     }
 
+    public Movie getQueriedMovie(Movie movie){
+        List<Item> movies = items.get(ItemType.MOVIE);
+        return (Movie)movies.get(movies.indexOf(movie));
+    }
+
     private void instantiateWithPreExistingBooks(List<Item> items){
         items.add(new Book("A", "Charles", "2015"));
         items.add(new Book("B", "Henry", "2017"));

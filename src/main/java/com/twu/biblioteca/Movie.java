@@ -5,14 +5,19 @@ import java.util.Objects;
 public class Movie implements Item {
     private final String name;
     private final String year;
-    private final String director;
-    private final String rating;
+    private String director;
+    private String rating;
 
     Movie(String name, String year, String director, String rating){
         this.name = name;
         this.year = year;
         this.director = director;
         this.rating = rating;
+    }
+
+    public Movie(String name, String year) {
+        this.name = name;
+        this.year = year;
     }
 
     public String getInfo(){
@@ -25,9 +30,7 @@ public class Movie implements Item {
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
         return name.equals(movie.name) &&
-                year.equals(movie.year) &&
-                director.equals(movie.director) &&
-                rating.equals(movie.rating);
+                year.equals(movie.year);
     }
 
     @Override

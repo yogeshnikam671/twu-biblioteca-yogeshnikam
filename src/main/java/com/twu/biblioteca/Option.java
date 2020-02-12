@@ -90,6 +90,24 @@ public abstract class Option {
         }
     };
 
+    public static final Option CHECKOUT_MOVIE = new Option() {
+        @Override
+        public void process(Library library, Scanner scanner) {
+            print("Enter Name and Year Of Release, respectively");
+            String name = scanner.next();
+            String year = scanner.next();
+            Movie movie = library.getQueriedMovie(new Movie(name, year));
+            library.checkOut(movie, ItemType.MOVIE);
+        }
+    };
+
+    public static final Option SHOW_MOVIES = new Option() {
+        @Override
+        public void process(Library library, Scanner scanner) {
+
+        }
+    };
+
     static {
         OptionsMap = new HashMap<>();
         initializeHashMap();
@@ -105,7 +123,9 @@ public abstract class Option {
         OptionsMap.put(1, SHOW_BOOKS);
         OptionsMap.put(2, CHECKOUT_BOOK);
         OptionsMap.put(3, RETURN_BOOK);
-        OptionsMap.put(4, QUIT);
+        OptionsMap.put(4, SHOW_MOVIES);
+        OptionsMap.put(5, CHECKOUT_MOVIE);
+        OptionsMap.put(6, QUIT);
     }
 
 }

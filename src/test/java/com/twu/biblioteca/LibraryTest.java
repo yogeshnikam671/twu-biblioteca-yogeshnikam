@@ -102,4 +102,16 @@ class LibraryTest {
         assertFalse(library.isValid(user));
     }
 
+    @Test
+    void shouldBeAbleToReturnTheAllInformationHoldingMovieObjectWhenQueried() {
+        Movie expectedMovie = new Movie("Dabangg","2015", "Rajesh","10" );
+
+        Movie movie = new Movie("Dabangg","2015");
+        Library library = new Library(new Librarian());
+
+        Movie movieContainingAllInfo = library.getQueriedMovie(movie);
+
+
+        assertEquals(expectedMovie, movieContainingAllInfo);
+    }
 }
