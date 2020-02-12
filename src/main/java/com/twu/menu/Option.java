@@ -109,7 +109,7 @@ public abstract class Option {
     public static final Option SHOW_MOVIES = new Option() {
         @Override
         public void process(Library library, Scanner scanner) {
-
+            library.show(ItemType.MOVIE);
         }
     };
 
