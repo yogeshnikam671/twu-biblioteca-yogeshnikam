@@ -11,8 +11,8 @@ public class Menu {
     private List<String> options;
 
     public Menu() {
-        optionId = new ArrayList<>(asList(1, 2, 3, 4));
-        options = new ArrayList<>(asList("List of books", "Checkout a book", "Return a book","Quit the application"));
+        optionId = new ArrayList<>(asList(1, 2, 3, 4, 5, 6));
+        options = new ArrayList<>(asList("List of books", "Checkout a book", "Return a book","List of movies", "Checkout a movie","Quit the application"));
     }
 
     public void display() {
