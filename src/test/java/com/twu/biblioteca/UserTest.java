@@ -13,6 +13,6 @@ class UserTest {
 
         User user2 = new User("345-6789", "pass");
 
-        assertFalse(user1.equals(user2));
+        assertNotEquals(user1, user2);
     }
 }

@@ -8,14 +8,17 @@ import static com.twu.biblioteca.Printer.*;
 
 public class Library {
 
+    private List<User> users;
     private HashMap<ItemType, List<Item>> items;
     private Librarian librarian;
 
     public Library(Librarian librarian) {
         items = new HashMap<>();
         initializeHashMap();
+        instantiateWithPreExistingUsers();
         this.librarian = librarian;
     }
+
 
     public List<Item> get(ItemType itemType) {
         return items.get(itemType);
@@ -75,6 +78,13 @@ public class Library {
 
         items.put(ItemType.BOOK, bookList);
         items.put(ItemType.MOVIE, movieList);
+    }
+
+    private void instantiateWithPreExistingUsers() {
+        users = new ArrayList<>();
+        users.add(new User("123-4567", "dada"));
+        users.add(new User("123-4568","dada1"));
+        users.add(new User("123-4569","dada2"));
     }
 }
 
