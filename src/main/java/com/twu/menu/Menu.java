@@ -9,7 +9,7 @@ public class Menu {
     private final List<String> options;
 
     public Menu() {
-        options = asList("List of books", "Checkout a book", "Return a book","List of movies", "Checkout a movie","Quit the application");
+        options = asList("List of books", "Checkout a book", "Return a book","View checked-out books","List of movies", "Checkout a movie","Quit the application");
     }
 
     public void display(Printer printer) {
