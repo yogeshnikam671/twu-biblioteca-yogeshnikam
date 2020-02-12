@@ -168,4 +168,19 @@ class LibrarianTest {
 
         assertEquals("Thank You! Enjoy the book\nYou are not accountable to return this book\n\n", outContent.toString());
     }
+
+    @Test
+    void shouldBeAbleToReturnTheListOfBooksCheckedOutByAnUser() {
+        User user = new User("123-4567", "dada");
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
+        Book book1 = new Book("A", "Charles", "2015");
+        Book book2 = new Book("C", "Richard", "2012");
+
+        library.checkOut(book1, ItemType.BOOK, user);
+        library.checkOut(book2, ItemType.BOOK, user);
+
+
+        assertEquals(asList(book1, book2), librarian.getBooksCheckedOutBy(user));
+    }
 }

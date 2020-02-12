@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.items.Book;
 import com.twu.items.Item;
 import com.twu.items.ItemType;
 
@@ -51,6 +52,17 @@ public class Librarian {
             return false;
         }
         return true;
+    }
+
+    public List<Book> getBooksCheckedOutBy(User user){
+        List<Book> checkedOutBooks = new ArrayList<>();
+        List<Item> books = checkedOutItems.get(ItemType.BOOK);
+
+        for(int index = 0; index < accountableUsers.size(); index++){
+            if(accountableUsers.get(index).equals(user))
+                checkedOutBooks.add((Book)books.get(index));
+        }
+        return checkedOutBooks;
     }
 
     public void notifyAsUnsuccessfulCheckOut() {
