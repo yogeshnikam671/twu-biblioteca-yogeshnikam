@@ -8,41 +8,41 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MenuTest {
+class MainMenuTest {
     @Test
     void shouldBeAbleToDisplayOptions() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        Menu menu = new Menu();
+        MainMenu mainMenu = new MainMenu();
 
-        menu.display(new Printer());
+        mainMenu.display(new Printer());
 
-        assertEquals("\nMenu:\n\n1 List of books\n2 Checkout a book\n3 Return a book\n4 View checked-out books\n5 List of movies\n6 Checkout a movie\n7 Quit the application\n", outContent.toString());
+        assertEquals("\nMenu:\n\n1 List of books\n2 Log in\n3 List of movies\n4 Checkout a movie\n5 Quit the application\n", outContent.toString());
     }
 
     @Test
     void shouldBeAbleCheckInputFromUserIsValid() {
-        Menu menu = new Menu();
+        MainMenu mainMenu = new MainMenu();
 
-        boolean isValid = menu.isValidOption("1");
+        boolean isValid = mainMenu.isValidOption("1");
 
         assertTrue(isValid);
     }
 
     @Test
     void shouldBeAbleCheckInputFromUserIsInValid() {
-        Menu menu = new Menu();
+        MainMenu mainMenu = new MainMenu();
 
-        boolean isValid = menu.isValidOption("10");
+        boolean isValid = mainMenu.isValidOption("10");
 
         assertFalse(isValid);
     }
 
     @Test
     void shouldBeAbleCheckInputFromUserIsOfInValidType() {
-        Menu menu = new Menu();
+        MainMenu mainMenu = new MainMenu();
 
-        boolean isValid = menu.isValidOption("abcd");
+        boolean isValid = mainMenu.isValidOption("abcd");
 
         assertFalse(isValid);
     }

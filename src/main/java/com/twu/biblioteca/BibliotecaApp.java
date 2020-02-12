@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.menu.Menu;
+import com.twu.menu.MainMenu;
 import com.twu.menu.Option;
 
 import java.util.Scanner;
@@ -12,13 +12,13 @@ import static java.lang.Integer.parseInt;
 public class BibliotecaApp {
     private  Scanner scanner;
     private  Library library;
-    private  Menu menu;
+    private MainMenu mainMenu;
     private  Printer printer;
 
-    public BibliotecaApp(Scanner scanner, Library library, Menu menu, Printer printer) {
+    public BibliotecaApp(Scanner scanner, Library library, MainMenu mainMenu, Printer printer) {
         this.scanner = scanner;
         this.library = library;
-        this.menu = menu;
+        this.mainMenu = mainMenu;
         this.printer = printer;
     }
 
@@ -28,9 +28,9 @@ public class BibliotecaApp {
         Scanner scanner = new Scanner(System.in);
         Librarian librarian = new Librarian(printer);
         Library library = new Library(librarian, printer);
-        Menu menu = new Menu();
+        MainMenu mainMenu = new MainMenu();
 
-        BibliotecaApp app = new BibliotecaApp(scanner, library, menu, printer);
+        BibliotecaApp app = new BibliotecaApp(scanner, library, mainMenu, printer);
 
         app.start();
     }
@@ -41,10 +41,10 @@ public class BibliotecaApp {
         printer.print();
 
         while (true) {
-            menu.display(printer);
+            mainMenu.display(printer);
 
             String choice = scanner.next();
-            if (!menu.isValidOption(choice)) {
+            if (!mainMenu.isValidOption(choice)) {
                 printer.print("Please select a valid option\n");
                 continue;
             }

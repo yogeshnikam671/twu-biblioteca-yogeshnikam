@@ -5,19 +5,16 @@ import com.twu.biblioteca.Printer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Menu {
+public class BookMenu {
     private final List<String> options;
 
-    public Menu() {
+    public BookMenu() {
         options = new ArrayList<>();
-        options.add("List of books");
         options.add("Checkout a book");
         options.add("Return a book");
         options.add("View checked-out books");
 
-        options.add("List of movies");
-        options.add("Checkout a movie");
-        options.add("Quit the application");
+        options.add("Back to Main Menu");
     }
 
     public void display(Printer printer) {
