@@ -46,12 +46,15 @@ public class Librarian {
 
     public boolean isAccountable(User user, Item book){
         List<Item> books = checkedOutItems.get(ItemType.BOOK);
-        if(accountableUsers.indexOf(user) != books.indexOf(book))
+        int index = 0;
+
+        for(User u : accountableUsers)
         {
-            printer.print("Invalid Return Request\n");
-            return false;
+            if(u.equals(user) && books.get(index).equals(book))
+                return true;
         }
-        return true;
+        printer.print("Invalid Return Request\n");
+        return false;
     }
 
     public List<Book> getBooksCheckedOutBy(User user){
