@@ -2,6 +2,8 @@ package com.twu.biblioteca;
 
 import java.util.Objects;
 
+import static com.twu.biblioteca.Printer.*;
+
 public class User {
     private String libraryNumber;
     private String password;
@@ -22,9 +24,9 @@ public class User {
         this.password = password;
     }
 
-    public static User getQueriedUser(String libraryNumber, String password) {
-        return new User(libraryNumber, password);
-    }
+//    public static User getQueriedUser(String libraryNumber, String password) {
+//        return new User(libraryNumber, password);
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -38,5 +40,9 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(libraryNumber, password);
+    }
+
+    public void displayInfo() {
+        print("Name: " + name + "\tEmail: " + email + "\tPhone: " + phoneNumber);
     }
 }

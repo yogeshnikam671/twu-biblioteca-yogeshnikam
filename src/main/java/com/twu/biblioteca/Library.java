@@ -65,6 +65,10 @@ public class Library {
         return false;
     }
 
+    public User getQueriedUser(User user) {
+        return users.get(users.indexOf(user));
+    }
+
     private void instantiateWithPreExistingBooks(List<Item> items){
         items.add(new Book("A", "Charles", "2015"));
         items.add(new Book("B", "Henry", "2017"));

@@ -24,20 +24,30 @@ public abstract class Option {
             print("Enter Library Number and Password, respectively");
             String libraryNumber = scanner.next();
             String password = scanner.next();
-            User user = getQueriedUser(libraryNumber, password);
 
-            if(!library.isValid(user)){
+            if(!library.isValid(new User(libraryNumber, password))){
                 print("Invalid User !");
                 return;
 
             }
+
+            User user = library.getQueriedUser(new User(libraryNumber, password));
+            String input = "1";
+            while(input.equals("1")) {
+                print("1. See Profile Information\n2. Continue With Checkout Process\n3. Go Back");
+                input = scanner.next();
+                if(input.equals("1"))
+                    user.displayInfo();
+            }
+
+            if(input.equals("3")) return;
 
             print("Enter Title, Author and Year Of Publication, respectively");
             String title = scanner.next();
             String author = scanner.next();
             String year = scanner.next();
             Book book = getQueriedBook(title, author, year);
-            library.checkOut(book, ItemType.BOOK);
+            library.checkOut(book, ItemType.BOOK, user);
         }
     };
 
@@ -47,7 +57,7 @@ public abstract class Option {
             print("Enter Library Number and Password, respectively");
             String libraryNumber = scanner.next();
             String password = scanner.next();
-            User user = getQueriedUser(libraryNumber, password);
+            User user = new User(libraryNumber, password);
 
             if(!library.isValid(user)){
                 print("Invalid User !");
