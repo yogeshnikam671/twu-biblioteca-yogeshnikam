@@ -10,6 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
+    User user = new User("123-4567", "dada");
 
     @Test
     void shouldBeAbleToShowListOfBooks() {
@@ -41,7 +42,7 @@ class LibraryTest {
 
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book, ItemType.BOOK);
+        library.checkOut(book, ItemType.BOOK, user);
 
         assertEquals(books, library.get(ItemType.BOOK));
     }
@@ -52,8 +53,8 @@ class LibraryTest {
         Library library = new Library(librarian);
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book, ItemType.BOOK);
-        library.returnBack(book, ItemType.BOOK);
+        library.checkOut(book, ItemType.BOOK, user);
+        library.returnBack(book, ItemType.BOOK, user);
 
         assertTrue(library.get(ItemType.BOOK).contains(book));
     }
@@ -100,4 +101,5 @@ class LibraryTest {
 
         assertFalse(library.isValid(user));
     }
+
 }

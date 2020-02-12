@@ -32,11 +32,11 @@ public class Library {
         }
     }
 
-    public void checkOut(Item item, ItemType itemType) {
+    public void checkOut(Item item, ItemType itemType, User... user) {
         List<Item> list = items.get(itemType);
         if (list.contains(item)) {
             list.remove(item);
-            librarian.markAsCheckedOut(item, itemType);
+            librarian.markAsCheckedOut(item, itemType, user);
             librarian.notifyAsSuccessfulCheckout();
             return;
         }
@@ -44,11 +44,14 @@ public class Library {
         librarian.notifyAsUnsuccessfulCheckOut();
     }
 
-    public void returnBack(Item item, ItemType itemType) {
+    public void returnBack(Item item, ItemType itemType, User... user) {
+        if(itemType == ItemType.BOOK && !librarian.isAccountable(user[0], item))
+            return;
+
         List<Item> list = items.get(itemType);
-        if (librarian.isCheckedOut(item, itemType)) {
+        if (librarian.isCheckedOut(item, itemType, user)) {
             list.add(item);
-            librarian.markAsReturned(item, itemType);
+            librarian.markAsReturned(item, itemType, user);
             librarian.notifyAsSuccessfulReturn();
             return;
         }

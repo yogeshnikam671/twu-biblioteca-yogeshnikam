@@ -17,6 +17,8 @@ class LibrarianTest {
 
     private PrintStream sysOut;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    User user = new User("123-4567", "dada");
+
 
     @BeforeEach
     public void setUpStreams() {
@@ -35,7 +37,7 @@ class LibrarianTest {
         Library library = new Library(librarian);
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book, ItemType.BOOK);
+        library.checkOut(book, ItemType.BOOK, user);
 
         assertTrue(librarian.getCheckedOut(ItemType.BOOK).contains(book));
     }
@@ -48,8 +50,8 @@ class LibrarianTest {
         Book book2 = new Book("A", "Charles", "2015");
         List<Book> checkedOutBooks = new ArrayList<>(asList(book1, book2));
 
-        library.checkOut(book1, ItemType.BOOK);
-        library.checkOut(book2, ItemType.BOOK);
+        library.checkOut(book1, ItemType.BOOK, user);
+        library.checkOut(book2, ItemType.BOOK, user);
 
 
         assertEquals(checkedOutBooks, librarian.getCheckedOut(ItemType.BOOK));
@@ -81,8 +83,8 @@ class LibrarianTest {
         Library library = new Library(librarian);
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book, ItemType.BOOK);
-        library.returnBack(book,ItemType.BOOK);
+        library.checkOut(book, ItemType.BOOK,user);
+        library.returnBack(book,ItemType.BOOK,user);
 
         assertFalse(librarian.getCheckedOut(ItemType.BOOK).contains(book));
     }
@@ -93,9 +95,9 @@ class LibrarianTest {
         Library library = new Library(librarian);
         Book book = new Book("C", "Richard", "2012");
 
-        library.checkOut(book, ItemType.BOOK);
+        library.checkOut(book, ItemType.BOOK, user);
 
-        assertTrue(librarian.isCheckedOut(book, ItemType.BOOK));
+        assertTrue(librarian.isCheckedOut(book, ItemType.BOOK, user));
     }
 
     @Test
@@ -103,7 +105,7 @@ class LibrarianTest {
         Librarian librarian = new Librarian();
         Book book = new Book("D", "Rajesh", "2012");
 
-        assertFalse(librarian.isCheckedOut(book, ItemType.BOOK));
+        assertFalse(librarian.isCheckedOut(book, ItemType.BOOK, user));
     }
 
     @Test
@@ -131,7 +133,7 @@ class LibrarianTest {
         Librarian librarian = new Librarian();
         Book book = mock(Book.class);
 
-        librarian.markAsCheckedOut(book, ItemType.BOOK);
+        librarian.markAsCheckedOut(book, ItemType.BOOK, user);
 
         assertTrue(librarian.getCheckedOut(ItemType.BOOK).contains(book));
     }
@@ -141,9 +143,26 @@ class LibrarianTest {
         Librarian librarian = new Librarian();
         Book book = mock(Book.class);
 
-        librarian.markAsReturned(book, ItemType.BOOK);
+        librarian.markAsReturned(book, ItemType.BOOK, user);
 
         assertFalse(librarian.getCheckedOut(ItemType.BOOK).contains(book));
     }
 
+    @Test
+    void shouldBeAbleToTellIfUserIsAccountableToReturnABookOrNot() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        User user1 = new User("123-4567", "dada");
+        User user2 = new User("123-4568", "dada");
+
+        Book book = new Book("A", "Charles", "2015");
+        Librarian librarian = new Librarian();
+        Library library = new Library(librarian);
+
+        library.checkOut(book, ItemType.BOOK, user1);
+        library.returnBack(book, ItemType.BOOK, user2);
+
+        assertEquals("Thank You! Enjoy the book\nYou are not accountable to return this book\n\n", outContent.toString());
+    }
 }
