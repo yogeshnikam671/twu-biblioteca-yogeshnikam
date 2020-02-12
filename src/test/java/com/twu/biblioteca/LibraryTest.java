@@ -84,4 +84,20 @@ class LibraryTest {
 
         assertEquals(movies, library.get(ItemType.MOVIE));
     }
+
+    @Test
+    void shouldBeAbleToCheckIfTheUserIsValid() {
+        Library library = new Library(new Librarian());
+        User user = new User("123-4567","dada");
+
+        assertTrue(library.isValid(user));
+    }
+
+    @Test
+    void shouldBeAbleToCheckIfTheUserIsInvalid() {
+        Library library = new Library(new Librarian());
+        User user = new User("234-5678","dada");
+
+        assertFalse(library.isValid(user));
+    }
 }

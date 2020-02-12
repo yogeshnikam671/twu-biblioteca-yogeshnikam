@@ -58,6 +58,12 @@ public class Library {
         librarian.notifyAsUnsuccessfulReturn();
     }
 
+    public boolean isValid(User user) {
+        if(users.contains(user))
+            return true;
+        return false;
+    }
+
     private void instantiateWithPreExistingBooks(List<Item> items){
         items.add(new Book("A", "Charles", "2015"));
         items.add(new Book("B", "Henry", "2017"));
@@ -86,5 +92,6 @@ public class Library {
         users.add(new User("123-4568","dada1"));
         users.add(new User("123-4569","dada2"));
     }
+
 }
 
