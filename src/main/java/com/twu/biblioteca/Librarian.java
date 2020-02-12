@@ -37,7 +37,12 @@ public class Librarian {
     }
 
     public void markAsReturned(Item item, ItemType itemType, User... user) {
+        int index = checkedOutItems.get(itemType).indexOf(item);
+
         checkedOutItems.get(itemType).remove(item);
+
+        if(user.length != 0)
+            accountableUsers.remove(index);
     }
 
     public boolean isCheckedOut(Item item, ItemType itemType, User... user) {
@@ -52,6 +57,7 @@ public class Librarian {
         {
             if(u.equals(user) && books.get(index).equals(book))
                 return true;
+            index++;
         }
         printer.print("Invalid Return Request\n");
         return false;
