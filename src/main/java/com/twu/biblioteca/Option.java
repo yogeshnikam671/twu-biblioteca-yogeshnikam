@@ -25,8 +25,12 @@ public abstract class Option {
             String libraryNumber = scanner.next();
             String password = scanner.next();
             User user = getQueriedUser(libraryNumber, password);
-            if(!library.isValid(user))
+
+            if(!library.isValid(user)){
+                print("Invalid User !");
                 return;
+
+            }
 
             print("Enter Title, Author and Year Of Publication, respectively");
             String title = scanner.next();
@@ -44,8 +48,12 @@ public abstract class Option {
             String libraryNumber = scanner.next();
             String password = scanner.next();
             User user = getQueriedUser(libraryNumber, password);
-            if(!library.isValid(user))
+
+            if(!library.isValid(user)){
+                print("Invalid User !");
                 return;
+
+            }
 
             print("Enter Title, Author and Year Of Publication, respectively");
             String title = scanner.next();
