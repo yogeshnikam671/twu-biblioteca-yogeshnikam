@@ -1,25 +1,21 @@
 package com.twu.menu;
 
 import com.twu.biblioteca.Printer;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
 
 public class Menu {
-    private List<Integer> optionId; // TODO - do these change? why not final?
-    private List<String> options;
+    private final List<String> options;
 
-    public Menu() { // TODO - why not just use asList? - Now it'll work. And you won't know why. - Go ask people when this does not work. And tell me.
-        optionId = new ArrayList<>(asList(1, 2, 3, 4, 5, 6)); // TODO - coupling, introduce a new option, remember to add it here too.
-        options = new ArrayList<>(asList("List of books", "Checkout a book", "Return a book","List of movies", "Checkout a movie","Quit the application"));
+    public Menu() {
+        options = asList("List of books", "Checkout a book", "Return a book","List of movies", "Checkout a movie","Quit the application");
     }
 
     public void display(Printer printer) {
-        printer.print("\nMenu:\n"); // TODO - fix this global problem
-        for (int index = 0; index < options.size(); index++) {
-            printer.print(optionId.get(index) + " " + options.get(index));
+        printer.print("\nMenu:\n");
+        for (int index = 1; index <= options.size(); index++) {
+            printer.print(index + " " + options.get(index - 1));
         }
     }
 
@@ -32,6 +28,6 @@ public class Menu {
             return false;
         }
 
-        return optionId.contains(input); // TODO - how will you do it when you delete optionId?
+        return (input > 0 && input <= options.size());
     }
 }

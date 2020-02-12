@@ -5,9 +5,8 @@ import com.twu.menu.Option;
 
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Greeter.*;
+import static com.twu.biblioteca.Greeter.greet;
 import static com.twu.menu.Option.getOption;
-import static com.twu.biblioteca.Printer.*;
 import static java.lang.Integer.parseInt;
 
 public class BibliotecaApp {
