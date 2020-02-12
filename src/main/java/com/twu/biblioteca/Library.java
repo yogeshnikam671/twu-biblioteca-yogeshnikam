@@ -16,12 +16,14 @@ public class Library {
     private List<User> users;
     private HashMap<ItemType, List<Item>> items;
     private Librarian librarian;
+    private Printer printer;
 
-    public Library(Librarian librarian) {
+    public Library(Librarian librarian, Printer printer) {
         items = new HashMap<>();
         initializeHashMap();
         instantiateWithPreExistingUsers();
         this.librarian = librarian;
+        this.printer = printer;
     }
 
 
@@ -32,7 +34,7 @@ public class Library {
     public void show(ItemType itemType) {
         int counter = 1;
         for (Item item : items.get(itemType)) {
-            print(counter + ". " + item.getInfo());
+            printer.print(counter + ". " + item.getInfo());
             counter++;
         }
     }

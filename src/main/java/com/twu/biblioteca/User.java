@@ -24,10 +24,6 @@ public class User {
         this.password = password;
     }
 
-//    public static User getQueriedUser(String libraryNumber, String password) {
-//        return new User(libraryNumber, password);
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,7 +38,7 @@ public class User {
         return Objects.hash(libraryNumber, password);
     }
 
-    public void displayInfo() {
-        print("Name: " + name + "\tEmail: " + email + "\tPhone: " + phoneNumber);
+    public void displayInfo(Printer printer) {
+        printer.print("Name: " + name + "\tEmail: " + email + "\tPhone: " + phoneNumber);
     }
 }

@@ -11,39 +11,42 @@ import static com.twu.biblioteca.Printer.*;
 import static java.lang.Integer.parseInt;
 
 public class BibliotecaApp {
-    private static Scanner scanner;
-    private static Library library;
-    private Menu menu;
+    private  Scanner scanner;
+    private  Library library;
+    private  Menu menu;
+    private  Printer printer;
 
-    public BibliotecaApp(Scanner scanner, Library library, Menu menu) {
-        BibliotecaApp.scanner = scanner;
-        BibliotecaApp.library = library;
+    public BibliotecaApp(Scanner scanner, Library library, Menu menu, Printer printer) {
+        this.scanner = scanner;
+        this.library = library;
         this.menu = menu;
+        this.printer = printer;
     }
 
     public static void main(String[] args) {
 
+        Printer printer = new Printer();
         Scanner scanner = new Scanner(System.in);
-        Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
         Menu menu = new Menu();
 
-        BibliotecaApp app = new BibliotecaApp(scanner, library, menu);
+        BibliotecaApp app = new BibliotecaApp(scanner, library, menu, printer);
 
         app.start();
     }
 
     @SuppressWarnings("InfiniteLoopStatement")
     public void start() {
-        greet();
-        print();
+        greet(printer);
+        printer.print();
 
         while (true) {
-            menu.display();
+            menu.display(printer);
 
             String choice = scanner.next();
             if (!menu.isValidOption(choice)) {
-                print("Please select a valid option");
+                printer.print("Please select a valid option");
                 continue;
             }
 
@@ -53,6 +56,6 @@ public class BibliotecaApp {
 
     private void process(int choice) {
         Option option = getOption(choice);
-        option.process(library, scanner);
+        option.process(library, scanner, printer);
     }
 }

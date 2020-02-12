@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PrinterTest {
     private PrintStream sysOut;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    Printer printer = new Printer();
 
     @BeforeEach
     public void setUpStreams() {
@@ -29,7 +30,7 @@ class PrinterTest {
     void shouldBeAbleToPrintAString() {
         String expected = "Hello !\n";
 
-        print("Hello !");
+        printer.print("Hello !");
 
         assertEquals(expected, outContent.toString());
     }
@@ -38,7 +39,7 @@ class PrinterTest {
     void shouldBeAbleToPrintAnInteger() {
         String expected = "1";
 
-        print(1);
+        printer.print(1);
 
         assertEquals(expected, outContent.toString());
     }
@@ -47,7 +48,7 @@ class PrinterTest {
     void shouldBeAbleToPrintANewLineWhenNoArgumentsGiven() {
         String expected = "\n";
 
-        print();
+        printer.print();
 
         assertEquals(expected, outContent.toString());
     }

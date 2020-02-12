@@ -1,5 +1,6 @@
 package com.twu.menu;
 
+import com.twu.biblioteca.Printer;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -14,7 +15,7 @@ class MenuTest {
         System.setOut(new PrintStream(outContent));
         Menu menu = new Menu();
 
-        menu.display();
+        menu.display(new Printer());
 
         assertEquals("\nMenu:\n\n1 List of books\n2 Checkout a book\n3 Return a book\n4 List of movies\n5 Checkout a movie\n6 Quit the application\n", outContent.toString());
     }

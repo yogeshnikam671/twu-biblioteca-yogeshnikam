@@ -1,9 +1,10 @@
 package com.twu.menu;
 
+import com.twu.biblioteca.Printer;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.twu.biblioteca.Printer.print;
 import static java.util.Arrays.asList;
 
 public class Menu {
@@ -15,10 +16,10 @@ public class Menu {
         options = new ArrayList<>(asList("List of books", "Checkout a book", "Return a book","List of movies", "Checkout a movie","Quit the application"));
     }
 
-    public void display() {
-        print("\nMenu:\n"); // TODO - fix this global problem
+    public void display(Printer printer) {
+        printer.print("\nMenu:\n"); // TODO - fix this global problem
         for (int index = 0; index < options.size(); index++) {
-            print(optionId.get(index) + " " + options.get(index));
+            printer.print(optionId.get(index) + " " + options.get(index));
         }
     }
 

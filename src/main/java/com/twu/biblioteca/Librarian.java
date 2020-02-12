@@ -7,21 +7,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.twu.biblioteca.Printer.*;
-
 public class Librarian {
     private HashMap<ItemType, List<Item>> checkedOutItems;
     private List<User> accountableUsers;
+    private Printer printer;
 
     private final static String SUCCESS_CHECKOUT_MESSAGE = "Thank You! Enjoy the book";
     private final static String UNSUCCESS_CHECKOUT_MESSAGE = "Sorry, that book is not available";
     private final static String SUCCESS_RETURN_MESSAGE = "Thank you for returning the book";
     private final static String UNSUCCESS_RETURN_MESSAGE = "This is not a valid book to return";
 
-    public Librarian() {
+    public Librarian(Printer printer) {
         accountableUsers = new ArrayList<>();
         checkedOutItems = new HashMap<>();
         initializeHashMap();
+        this.printer = printer;
     }
 
     public List<Item> getCheckedOut(ItemType itemType) {
@@ -47,26 +47,26 @@ public class Librarian {
         List<Item> books = checkedOutItems.get(ItemType.BOOK);
         if(accountableUsers.indexOf(user) != books.indexOf(book))
         {
-            print("You are not accountable to return this book\n");
+            printer.print("You are not accountable to return this book\n");
             return false;
         }
         return true;
     }
 
     public void notifyAsUnsuccessfulCheckOut() {
-        print(UNSUCCESS_CHECKOUT_MESSAGE);
+        printer.print(UNSUCCESS_CHECKOUT_MESSAGE);
     }
 
     public void notifyAsUnsuccessfulReturn() {
-        print(UNSUCCESS_RETURN_MESSAGE);
+        printer.print(UNSUCCESS_RETURN_MESSAGE);
     }
 
     public void notifyAsSuccessfulCheckout() {
-        print(SUCCESS_CHECKOUT_MESSAGE);
+        printer.print(SUCCESS_CHECKOUT_MESSAGE);
     }
 
     public void notifyAsSuccessfulReturn() {
-        print(SUCCESS_RETURN_MESSAGE);
+        printer.print(SUCCESS_RETURN_MESSAGE);
     }
 
     private void initializeHashMap(){

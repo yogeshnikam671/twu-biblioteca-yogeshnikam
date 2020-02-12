@@ -20,6 +20,7 @@ class LibrarianTest {
     private PrintStream sysOut;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     User user = new User("123-4567", "dada");
+    Printer printer = new Printer();
 
 
     @BeforeEach
@@ -35,8 +36,8 @@ class LibrarianTest {
 
     @Test
     void shouldBeAbleToPrepareACheckedOutBookForCollection() {
-        Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK, user);
@@ -46,8 +47,8 @@ class LibrarianTest {
 
     @Test
     void shouldBeAbleToPrepareAListOfCheckedOutBooksForCollection() {
-        Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
         Book book1 = new Book("C", "Richard", "2012");
         Book book2 = new Book("A", "Charles", "2015");
         List<Book> checkedOutBooks = new ArrayList<>(asList(book1, book2));
@@ -61,7 +62,7 @@ class LibrarianTest {
 
     @Test
     void shouldNotifyCustomerOnSuccessfulCheckoutOfTheBook() {
-        Librarian librarian = new Librarian();
+        Librarian librarian = new Librarian(printer);
         String expectedMessage = "Thank You! Enjoy the book\n";
 
         librarian.notifyAsSuccessfulCheckout();
@@ -71,7 +72,7 @@ class LibrarianTest {
 
     @Test
     void shouldNotifyCustomerOnUnSuccessfulCheckoutOfTheBook() {
-        Librarian librarian = new Librarian();
+        Librarian librarian = new Librarian(printer);
         String expectedMessage = "Sorry, that book is not available\n";
 
         librarian.notifyAsUnsuccessfulCheckOut();
@@ -81,8 +82,8 @@ class LibrarianTest {
 
     @Test
     void shouldRemoveTheBookFromCheckedOutListWhenItIsReturned() {
-        Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK,user);
@@ -93,8 +94,8 @@ class LibrarianTest {
 
     @Test
     void shouldBeAbleToCheckIfTheCustomerIsReturningAValidBook() {
-        Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK, user);
@@ -104,7 +105,7 @@ class LibrarianTest {
 
     @Test
     void shouldBeAbleToCheckIfTheCustomerIsReturningAnInValidBook() {
-        Librarian librarian = new Librarian();
+        Librarian librarian = new Librarian(printer);
         Book book = new Book("D", "Rajesh", "2012");
 
         assertFalse(librarian.isCheckedOut(book, ItemType.BOOK, user));
@@ -112,7 +113,7 @@ class LibrarianTest {
 
     @Test
     void shouldNotifyCustomerOnSuccessfulReturnOfTheBook() {
-        Librarian librarian = new Librarian();
+        Librarian librarian = new Librarian(printer);
         String expectedMessage = "Thank you for returning the book\n";
 
         librarian.notifyAsSuccessfulReturn();
@@ -122,7 +123,7 @@ class LibrarianTest {
 
     @Test
     void shouldNotifyCustomerOnUnSuccessfulReturnOfTheBook() {
-        Librarian librarian = new Librarian();
+        Librarian librarian = new Librarian(printer);
         String expectedMessage = "This is not a valid book to return\n";
 
         librarian.notifyAsUnsuccessfulReturn();
@@ -132,7 +133,7 @@ class LibrarianTest {
 
     @Test
     void shouldAddTheBookToCheckedOutListWhenMarkedAsCheckedOut() {
-        Librarian librarian = new Librarian();
+        Librarian librarian = new Librarian(printer);
         Book book = mock(Book.class);
 
         librarian.markAsCheckedOut(book, ItemType.BOOK, user);
@@ -142,7 +143,7 @@ class LibrarianTest {
 
     @Test
     void shouldRemoveTheBookFromCheckedOutListWhenMarkedAsReturned() {
-        Librarian librarian = new Librarian();
+        Librarian librarian = new Librarian(printer);
         Book book = mock(Book.class);
 
         librarian.markAsReturned(book, ItemType.BOOK, user);
@@ -159,8 +160,8 @@ class LibrarianTest {
         User user2 = new User("123-4568", "dada");
 
         Book book = new Book("A", "Charles", "2015");
-        Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
 
         library.checkOut(book, ItemType.BOOK, user1);
         library.returnBack(book, ItemType.BOOK, user2);

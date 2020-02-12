@@ -1,6 +1,7 @@
 package com.twu.menu;
 
 import com.twu.biblioteca.Library;
+import com.twu.biblioteca.Printer;
 import com.twu.biblioteca.User;
 import com.twu.items.Book;
 import com.twu.items.ItemType;
@@ -18,20 +19,20 @@ public abstract class Option {
 
     public static final Option SHOW_BOOKS = new Option() {
         @Override
-        public void process(Library library, Scanner scanner) {
+        public void process(Library library, Scanner scanner, Printer printer) {
             library.show(ItemType.BOOK);
         }
     };
 
     public static final Option CHECKOUT_BOOK = new Option() {
         @Override
-        public void process(Library library, Scanner scanner) {
-            print("Enter Library Number and Password, respectively");
+        public void process(Library library, Scanner scanner, Printer printer) {
+            printer.print("Enter Library Number and Password, respectively");
             String libraryNumber = scanner.next();
             String password = scanner.next();
 
             if(!library.isValid(new User(libraryNumber, password))){
-                print("Invalid User !");
+                printer.print("Invalid User !");
                 return;
 
             }
@@ -39,15 +40,15 @@ public abstract class Option {
             User user = library.getQueriedUser(new User(libraryNumber, password));
             String input = "1";
             while(input.equals("1")) {
-                print("1. See Profile Information\n2. Continue With Checkout Process\n3. Go Back");
+                printer.print("1. See Profile Information\n2. Continue With Checkout Process\n3. Go Back");
                 input = scanner.next();
                 if(input.equals("1"))
-                    user.displayInfo();
+                    user.displayInfo(printer);
             }
 
             if(input.equals("3")) return;
 
-            print("Enter Title, Author and Year Of Publication, respectively");
+            printer.print("Enter Title, Author and Year Of Publication, respectively");
             String title = scanner.next();
             String author = scanner.next();
             String year = scanner.next();
@@ -58,13 +59,13 @@ public abstract class Option {
 
     public static final Option RETURN_BOOK = new Option() {
         @Override
-        public void process(Library library, Scanner scanner) {
-            print("Enter Library Number and Password, respectively");
+        public void process(Library library, Scanner scanner, Printer printer) {
+            printer.print("Enter Library Number and Password, respectively");
             String libraryNumber = scanner.next();
             String password = scanner.next();
 
             if(!library.isValid(new User(libraryNumber, password))){
-                print("Invalid User !");
+                printer.print("Invalid User !");
                 return;
 
             }
@@ -72,14 +73,14 @@ public abstract class Option {
             User user = library.getQueriedUser(new User(libraryNumber, password));
             String input = "1";
             while(input.equals("1")) {
-                print("1. See Profile Information\n2. Continue With Return Process\n3. Go Back");
+                printer.print("1. See Profile Information\n2. Continue With Return Process\n3. Go Back");
                 input = scanner.next();
                 if(input.equals("1"))
-                    user.displayInfo();
+                    user.displayInfo(printer);
             }
 
             if(input.equals("3")) return;
-            print("Enter Title, Author and Year Of Publication, respectively");
+            printer.print("Enter Title, Author and Year Of Publication, respectively");
             String title = scanner.next();
             String author = scanner.next();
             String year = scanner.next();
@@ -90,15 +91,15 @@ public abstract class Option {
 
     public static final Option QUIT = new Option() {
         @Override
-        public void process(Library library, Scanner scanner) {
+        public void process(Library library, Scanner scanner, Printer printer) {
             System.exit(0);
         }
     };
 
     public static final Option CHECKOUT_MOVIE = new Option() {
         @Override
-        public void process(Library library, Scanner scanner) {
-            print("Enter Name and Year Of Release, respectively");
+        public void process(Library library, Scanner scanner, Printer printer) {
+            printer.print("Enter Name and Year Of Release, respectively");
             String name = scanner.next();
             String year = scanner.next();
             Movie movie = library.getQueriedMovie(new Movie(name, year));
@@ -108,7 +109,7 @@ public abstract class Option {
 
     public static final Option SHOW_MOVIES = new Option() {
         @Override
-        public void process(Library library, Scanner scanner) {
+        public void process(Library library, Scanner scanner, Printer printer) {
             library.show(ItemType.MOVIE);
         }
     };
@@ -122,7 +123,7 @@ public abstract class Option {
         return OptionsMap.get(selectedOption);
     }
 
-    public abstract void process(Library library, Scanner scanner);
+    public abstract void process(Library library, Scanner scanner, Printer printer);
 
     private static void initializeHashMap() {
         OptionsMap.put(1, SHOW_BOOKS);

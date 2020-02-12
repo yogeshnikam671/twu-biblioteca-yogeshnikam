@@ -23,10 +23,12 @@ class UserTest {
     void shouldBeAbleToDisplayUserInformation() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        Library library = new Library(new Librarian());
+        Printer printer = new Printer();
+
+        Library library = new Library(new Librarian(printer), printer);
         User user = library.getQueriedUser(new User("123-4567", "dada"));
 
-        user.displayInfo();
+        user.displayInfo(printer);
 
         assertEquals("Name: " + "A" + "\tEmail: " + "A@mail.com" + "\tPhone: " + "1234567\n", outContent.toString());
     }

@@ -19,13 +19,14 @@ class LibraryTest {
     void shouldBeAbleToShowListOfBooks() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
+        Printer printer = new Printer();
 
         List<Book> books = new ArrayList<>();
         books.add(new Book("A", "Charles", "2015"));
         books.add(new Book("B", "Henry", "2017"));
         books.add(new Book("C", "Richard", "2012"));
 
-        Library library = new Library(new Librarian());
+        Library library = new Library(new Librarian(printer), printer);
 
 
         library.show(ItemType.BOOK);
@@ -36,8 +37,9 @@ class LibraryTest {
 
     @Test
     void shouldAllowTheCustomerToCheckOutABook() {
-        Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
+        Printer printer = new Printer();
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
 
         List<Book> books = new ArrayList<>();
         books.add(new Book("A", "Charles", "2015"));
@@ -52,8 +54,9 @@ class LibraryTest {
 
     @Test
     void shouldAllowTheCustomerToReturnABook() {
-        Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
+        Printer printer = new Printer();
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK, user);
@@ -66,8 +69,9 @@ class LibraryTest {
     void shouldBeAbleToShowListOfMovies() {
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
+        Printer printer = new Printer();
 
-        Library library = new Library(new Librarian());
+        Library library = new Library(new Librarian(printer), printer);
 
         library.show(ItemType.MOVIE);
 
@@ -76,8 +80,10 @@ class LibraryTest {
 
     @Test
     void shouldAllowTheCustomerToCheckOutAMovie() {
-        Librarian librarian = new Librarian();
-        Library library = new Library(librarian);
+        Printer printer = new Printer();
+        Librarian librarian = new Librarian(printer);
+        Library library = new Library(librarian, printer);
+
 
         List<Movie> movies = new ArrayList<>();
         movies.add(new Movie("Dabangg","2015", "Rajesh","10" ));
@@ -91,7 +97,8 @@ class LibraryTest {
 
     @Test
     void shouldBeAbleToCheckIfTheUserIsValid() {
-        Library library = new Library(new Librarian());
+        Printer printer = new Printer();
+        Library library = new Library(new Librarian(printer), printer);
         User user = new User("123-4567","dada");
 
         assertTrue(library.isValid(user));
@@ -99,7 +106,8 @@ class LibraryTest {
 
     @Test
     void shouldBeAbleToCheckIfTheUserIsInvalid() {
-        Library library = new Library(new Librarian());
+        Printer printer = new Printer();
+        Library library = new Library(new Librarian(printer), printer);
         User user = new User("234-5678","dada");
 
         assertFalse(library.isValid(user));
@@ -107,10 +115,11 @@ class LibraryTest {
 
     @Test
     void shouldBeAbleToReturnTheAllInformationHoldingMovieObjectWhenQueried() {
+        Printer printer = new Printer();
         Movie expectedMovie = new Movie("Dabangg","2015", "Rajesh","10" );
 
         Movie movie = new Movie("Dabangg","2015");
-        Library library = new Library(new Librarian());
+        Library library = new Library(new Librarian(printer), printer);
 
         Movie movieContainingAllInfo = library.getQueriedMovie(movie);
 
