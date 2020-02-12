@@ -10,6 +10,7 @@ public class BookMenu {
 
     public BookMenu() {
         options = new ArrayList<>();
+        options.add("View profile information");
         options.add("Checkout a book");
         options.add("Return a book");
         options.add("View checked-out books");

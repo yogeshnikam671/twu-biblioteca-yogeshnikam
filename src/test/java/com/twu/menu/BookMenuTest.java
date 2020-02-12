@@ -17,7 +17,7 @@ class BookMenuTest {
 
         bookMenu.display(new Printer());
 
-        assertEquals("\nMenu:\n\n1 Checkout a book\n2 Return a book\n3 View checked-out books\n4 Back to Main Menu\n", outContent.toString());
+        assertEquals("\nMenu:\n\n1 View profile information\n2 Checkout a book\n3 Return a book\n4 View checked-out books\n5 Back to Main Menu\n", outContent.toString());
     }
 
     @Test
