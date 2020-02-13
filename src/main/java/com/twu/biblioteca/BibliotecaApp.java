@@ -11,8 +11,8 @@ import static com.twu.menu.MainMenuOption.getOption;
 import static java.lang.Integer.parseInt;
 
 public class BibliotecaApp {
-    private  Scanner scanner;
-    private  Library library;
+    private Scanner scanner;
+    private Library library;
     private MainMenu mainMenu;
     private Printer printer;
 

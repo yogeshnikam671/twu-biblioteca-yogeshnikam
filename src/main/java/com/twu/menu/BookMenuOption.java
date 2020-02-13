@@ -53,17 +53,17 @@ public abstract class BookMenuOption {
         @Override
         public void process(Library library, Scanner scanner, Printer printer, User user) {
 
-            List<Book> checkedOutBooks =  library.getBooksCheckedOutBy(user);
+            List<Book> checkedOutBooks = library.getBooksCheckedOutBy(user);
 
-            if(checkedOutBooks.size() == 0){
+            if (checkedOutBooks.size() == 0) {
                 printer.print("No books are checked out by you\n");
                 return;
             }
 
             printer.print("\nBooks Checked Out :\n");
             int counter = 1;
-            for(Book book : checkedOutBooks){
-                printer.print(counter + ". " +book.getInfo());
+            for (Book book : checkedOutBooks) {
+                printer.print(counter + ". " + book.getInfo());
                 counter++;
             }
         }

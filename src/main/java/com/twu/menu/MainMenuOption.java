@@ -33,7 +33,7 @@ public abstract class MainMenuOption {
             String password = scanner.next();
             User user = new User(libraryNumber, password);
 
-            if(!library.isValid(user)){
+            if (!library.isValid(user)) {
                 printer.print("Invalid User !");
                 return;
 

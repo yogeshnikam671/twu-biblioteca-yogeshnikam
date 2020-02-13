@@ -72,9 +72,9 @@ public class Library {
         List<Book> checkedOutBooks = new ArrayList<>();
         List<Item> books = checkedOutItems.get(ItemType.BOOK);
 
-        for(int index = 0; index < accountableUsers.size(); index++){
-            if(accountableUsers.get(index).equals(user))
-                checkedOutBooks.add((Book)books.get(index));
+        for (int index = 0; index < accountableUsers.size(); index++) {
+            if (accountableUsers.get(index).equals(user))
+                checkedOutBooks.add((Book) books.get(index));
         }
         return checkedOutBooks;
     }
@@ -91,7 +91,6 @@ public class Library {
         List<Item> movies = items.get(ItemType.MOVIE);
         return (Movie) movies.get(movies.indexOf(movie));
     }
-
 
 
     private void initializeHashMap() {
@@ -117,7 +116,7 @@ public class Library {
     private void markAsCheckedOut(Item item, ItemType itemType, User... user) {
         checkedOutItems.get(itemType).add(item);
 
-        if(user.length != 0)
+        if (user.length != 0)
             accountableUsers.add(user[0]);
     }
 
@@ -126,7 +125,7 @@ public class Library {
 
         checkedOutItems.get(itemType).remove(item);
 
-        if(user.length != 0 && index != -1)
+        if (user.length != 0 && index != -1)
             accountableUsers.remove(index);
     }
 
@@ -134,13 +133,12 @@ public class Library {
         return checkedOutItems.get(itemType).contains(item);
     }
 
-    private boolean isAccountable(User user, Item book){
+    private boolean isAccountable(User user, Item book) {
         List<Item> books = checkedOutItems.get(ItemType.BOOK);
         int index = 0;
 
-        for(User u : accountableUsers)
-        {
-            if(u.equals(user) && books.get(index).equals(book))
+        for (User u : accountableUsers) {
+            if (u.equals(user) && books.get(index).equals(book))
                 return true;
             index++;
         }

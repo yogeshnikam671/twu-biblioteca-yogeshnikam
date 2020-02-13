@@ -19,7 +19,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public User(String libraryNumber, String password){
+    public User(String libraryNumber, String password) {
         this.libraryNumber = libraryNumber;
         this.password = password;
     }

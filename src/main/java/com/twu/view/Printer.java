@@ -2,15 +2,15 @@ package com.twu.view;
 
 public class Printer {
 
-    public void print(String message){
+    public void print(String message) {
         System.out.println(message);
     }
 
-    public void print(int message){
+    public void print(int message) {
         System.out.print(message);
     }
 
-    public void print(){
+    public void print() {
         System.out.println();
     }
 

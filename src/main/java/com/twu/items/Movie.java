@@ -8,7 +8,7 @@ public class Movie implements Item {
     private String director;
     private String rating;
 
-    public Movie(String name, String year, String director, String rating){
+    public Movie(String name, String year, String director, String rating) {
         this.name = name;
         this.year = year;
         this.director = director;
@@ -20,7 +20,7 @@ public class Movie implements Item {
         this.year = year;
     }
 
-    public String getInfo(){
+    public String getInfo() {
         return name + "\t" + year + "\t" + director + "\t" + rating;
     }
 
