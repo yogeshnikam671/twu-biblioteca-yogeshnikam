@@ -26,7 +26,7 @@ class LibraryTest {
         books.add(new Book("B", "Henry", "2017"));
         books.add(new Book("C", "Richard", "2012"));
 
-        Library library = new Library(new Librarian(printer), printer);
+        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
 
 
         library.show(ItemType.BOOK);
@@ -39,7 +39,7 @@ class LibraryTest {
     void shouldAllowTheCustomerToCheckOutABook() {
         Printer printer = new Printer();
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
 
         List<Book> books = new ArrayList<>();
         books.add(new Book("A", "Charles", "2015"));
@@ -56,7 +56,7 @@ class LibraryTest {
     void shouldAllowTheCustomerToReturnABook() {
         Printer printer = new Printer();
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK, user);
@@ -71,7 +71,7 @@ class LibraryTest {
         System.setOut(new PrintStream(outContent));
         Printer printer = new Printer();
 
-        Library library = new Library(new Librarian(printer), printer);
+        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
 
         library.show(ItemType.MOVIE);
 
@@ -82,7 +82,7 @@ class LibraryTest {
     void shouldAllowTheCustomerToCheckOutAMovie() {
         Printer printer = new Printer();
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
 
 
         List<Movie> movies = new ArrayList<>();
@@ -98,7 +98,7 @@ class LibraryTest {
     @Test
     void shouldBeAbleToCheckIfTheUserIsValid() {
         Printer printer = new Printer();
-        Library library = new Library(new Librarian(printer), printer);
+        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
         User user = new User("123-4567","dada");
 
         assertTrue(library.isValid(user));
@@ -107,7 +107,7 @@ class LibraryTest {
     @Test
     void shouldBeAbleToCheckIfTheUserIsInvalid() {
         Printer printer = new Printer();
-        Library library = new Library(new Librarian(printer), printer);
+        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
         User user = new User("234-5678","dada");
 
         assertFalse(library.isValid(user));
@@ -119,7 +119,7 @@ class LibraryTest {
         Movie expectedMovie = new Movie("Dabangg","2015", "Rajesh","10" );
 
         Movie movie = new Movie("Dabangg","2015");
-        Library library = new Library(new Librarian(printer), printer);
+        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
 
         Movie movieContainingAllInfo = library.getQueriedMovie(movie);
 

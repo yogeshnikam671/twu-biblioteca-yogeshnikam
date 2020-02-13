@@ -37,7 +37,7 @@ class LibrarianTest {
     @Test
     void shouldBeAbleToPrepareACheckedOutBookForCollection() {
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK, user);
@@ -48,7 +48,7 @@ class LibrarianTest {
     @Test
     void shouldBeAbleToPrepareAListOfCheckedOutBooksForCollection() {
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
         Book book1 = new Book("C", "Richard", "2012");
         Book book2 = new Book("A", "Charles", "2015");
         List<Book> checkedOutBooks = new ArrayList<>(asList(book1, book2));
@@ -83,7 +83,7 @@ class LibrarianTest {
     @Test
     void shouldRemoveTheBookFromCheckedOutListWhenItIsReturned() {
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK,user);
@@ -95,7 +95,7 @@ class LibrarianTest {
     @Test
     void shouldBeAbleToCheckIfTheCustomerIsReturningAValidBook() {
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK, user);
@@ -161,7 +161,7 @@ class LibrarianTest {
 
         Book book = new Book("A", "Charles", "2015");
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
 
         library.checkOut(book, ItemType.BOOK, user1);
         library.returnBack(book, ItemType.BOOK, user2);
@@ -173,7 +173,7 @@ class LibrarianTest {
     void shouldBeAbleToReturnTheListOfBooksCheckedOutByAnUser() {
         User user = new User("123-4567", "dada");
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
         Book book1 = new Book("A", "Charles", "2015");
         Book book2 = new Book("C", "Richard", "2012");
 

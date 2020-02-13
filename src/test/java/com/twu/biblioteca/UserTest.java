@@ -25,7 +25,7 @@ class UserTest {
         System.setOut(new PrintStream(outContent));
         Printer printer = new Printer();
 
-        Library library = new Library(new Librarian(printer), printer);
+        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
         User user = library.getQueriedUser(new User("123-4567", "dada"));
 
         user.displayInfo(printer);

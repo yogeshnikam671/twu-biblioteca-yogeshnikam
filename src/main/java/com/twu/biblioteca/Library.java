@@ -15,15 +15,14 @@ public class Library {
     private HashMap<ItemType, List<Item>> items;
     private Librarian librarian;
     private Printer printer;
+    private DataInitializer dataInitializer;
 
-    public Library(Librarian librarian, Printer printer) {
-        items = new HashMap<>();
-        initializeHashMap();
-        instantiateWithPreExistingUsers();
+    public Library(Librarian librarian, Printer printer, DataInitializer dataInitializer) {
         this.librarian = librarian;
         this.printer = printer;
+        this.dataInitializer = dataInitializer; 
+        initializeHashMap();
     }
-
 
     public List<Item> get(ItemType itemType) {
         return items.get(itemType);
@@ -50,7 +49,7 @@ public class Library {
     }
 
     public void returnBack(Item item, ItemType itemType, User... user) {
-        if(itemType == ItemType.BOOK && !librarian.isAccountable(user[0], item))
+        if (itemType == ItemType.BOOK && !librarian.isAccountable(user[0], item))
             return;
 
         List<Item> list = items.get(itemType);
@@ -64,7 +63,7 @@ public class Library {
         librarian.notifyAsUnsuccessfulReturn();
     }
 
-    public List<Book> getBooksCheckedOutBy(User user){
+    public List<Book> getBooksCheckedOutBy(User user) {
         return librarian.getBooksCheckedOutBy(user);
     }
 
@@ -76,38 +75,25 @@ public class Library {
         return users.get(users.indexOf(user));
     }
 
-    public Movie getQueriedMovie(Movie movie){
+    public Movie getQueriedMovie(Movie movie) {
         List<Item> movies = items.get(ItemType.MOVIE);
-        return (Movie)movies.get(movies.indexOf(movie));
+        return (Movie) movies.get(movies.indexOf(movie));
     }
 
-    private void instantiateWithPreExistingBooks(List<Item> items){
-        items.add(new Book("A", "Charles", "2015"));
-        items.add(new Book("B", "Henry", "2017"));
-        items.add(new Book("C", "Richard", "2012"));
-    }
+    private void initializeHashMap() {
+        items = new HashMap<>();
+        users = new ArrayList<>();
 
-    private void instantiateWithPreExistingMovies(List<Item> items){
-        items.add(new Movie("Dabangg","2015", "Rajesh","10" ));
-        items.add(new Movie("Bharat","2019","Suresh","1"));
-    }
-
-    private void initializeHashMap(){
         List<Item> bookList = new ArrayList<>();
-        instantiateWithPreExistingBooks(bookList);
+        dataInitializer.instantiateWithPreExistingBooks(bookList);
 
         List<Item> movieList = new ArrayList<>();
-        instantiateWithPreExistingMovies(movieList);
+        dataInitializer.instantiateWithPreExistingMovies(movieList);
+
+        dataInitializer.instantiateWithPreExistingUsers(users);
 
         items.put(ItemType.BOOK, bookList);
         items.put(ItemType.MOVIE, movieList);
-    }
-
-    private void instantiateWithPreExistingUsers() {
-        users = new ArrayList<>();
-        users.add(new User("123-4567", "dada", "A","A@mail.com", "1234567"));
-        users.add(new User("123-4568","dada1", "B","B@mail.com", "1234568"));
-        users.add(new User("123-4569","dada2", "C","C@mail.com", "1234569"));
     }
 
 }

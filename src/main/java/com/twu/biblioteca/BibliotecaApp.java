@@ -27,7 +27,7 @@ public class BibliotecaApp {
         Printer printer = new Printer();
         Scanner scanner = new Scanner(System.in);
         Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer);
+        Library library = new Library(librarian, printer, new DataInitializer());
         MainMenu mainMenu = new MainMenu();
 
         BibliotecaApp app = new BibliotecaApp(scanner, library, mainMenu, printer);
