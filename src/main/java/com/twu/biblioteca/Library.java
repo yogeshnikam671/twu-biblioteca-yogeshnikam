@@ -19,7 +19,8 @@ public class Library {
     private HashMap<ItemType, List<Item>> items;
     private Printer printer;
 
-    private final static String SUCCESS_CHECKOUT_MESSAGE = "Thank You! Enjoy the book\n";
+    private final static String SUCCESS_MOVIE_CHECKOUT_MESSAGE = "Thank You! Enjoy the movie\n";
+    private final static String SUCCESS_BOOK_CHECKOUT_MESSAGE = "Thank You! Enjoy the book\n";
     private final static String UNSUCCESS_CHECKOUT_MESSAGE = "Sorry, that book is not available\n";
     private final static String SUCCESS_RETURN_MESSAGE = "Thank you for returning the book\n";
     private final static String UNSUCCESS_RETURN_MESSAGE = "This is not a valid book to return\n";
@@ -46,7 +47,7 @@ public class Library {
         if (list.contains(item)) {
             list.remove(item);
             markAsCheckedOut(item, itemType, user);
-            printer.print(SUCCESS_CHECKOUT_MESSAGE);
+            notifyAsSuccessfulCheckoutOf(itemType);
             return;
         }
 
@@ -144,6 +145,13 @@ public class Library {
         }
         printer.print("Invalid Return Request\n");
         return false;
+    }
+
+    private void notifyAsSuccessfulCheckoutOf(ItemType itemType){
+        if(itemType == ItemType.BOOK)
+            printer.print(SUCCESS_BOOK_CHECKOUT_MESSAGE);
+        else
+            printer.print(SUCCESS_MOVIE_CHECKOUT_MESSAGE);
     }
 
 }
