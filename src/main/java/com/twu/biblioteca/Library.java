@@ -149,8 +149,8 @@ public class Library {
         List<Item> books = checkedOutItems.get(ItemType.BOOK);
         int index = 0;
 
-        for (User u : accountableUsers) {
-            if (u.equals(user) && books.get(index).equals(book))
+        for (User accountableUser : accountableUsers) {
+            if (accountableUser.equals(user) && books.get(index).equals(book))
                 return true;
             index++;
         }
