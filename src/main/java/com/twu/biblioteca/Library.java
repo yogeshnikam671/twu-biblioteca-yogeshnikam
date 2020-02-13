@@ -20,6 +20,8 @@ public class Library {
     private Printer printer;
 
     private final static String SUCCESS_MOVIE_CHECKOUT_MESSAGE = "Thank You! Enjoy the movie\n";
+    private final static String UNSUCCESS_MOVIE_CHECKOUT_MESSAGE = "Movie not found\n";
+
     private final static String SUCCESS_BOOK_CHECKOUT_MESSAGE = "Thank You! Enjoy the book\n";
     private final static String UNSUCCESS_CHECKOUT_MESSAGE = "Sorry, that book is not available\n";
     private final static String SUCCESS_RETURN_MESSAGE = "Thank you for returning the book\n";
@@ -43,6 +45,9 @@ public class Library {
     }
 
     public void checkOut(Item item, ItemType itemType, User... user) {
+        if(item == null)
+            return;
+
         List<Item> list = items.get(itemType);
         if (list.contains(item)) {
             list.remove(item);
@@ -90,6 +95,12 @@ public class Library {
 
     public Movie getQueriedMovie(Movie movie) {
         List<Item> movies = items.get(ItemType.MOVIE);
+
+        if(!movies.contains(movie)){
+            printer.print(UNSUCCESS_MOVIE_CHECKOUT_MESSAGE);
+            return null;
+        }
+
         return (Movie) movies.get(movies.indexOf(movie));
     }
 
