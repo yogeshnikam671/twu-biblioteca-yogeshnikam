@@ -2,10 +2,11 @@ package com.twu.biblioteca;
 
 import com.twu.menu.MainMenu;
 import com.twu.menu.MainMenuOption;
+import com.twu.view.Printer;
 
 import java.util.Scanner;
 
-import static com.twu.biblioteca.Greeter.greet;
+import static com.twu.view.Greeter.greet;
 import static com.twu.menu.MainMenuOption.getOption;
 import static java.lang.Integer.parseInt;
 
@@ -13,7 +14,7 @@ public class BibliotecaApp {
     private  Scanner scanner;
     private  Library library;
     private MainMenu mainMenu;
-    private  Printer printer;
+    private Printer printer;
 
     public BibliotecaApp(Scanner scanner, Library library, MainMenu mainMenu, Printer printer) {
         this.scanner = scanner;

@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.view.Printer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static com.twu.biblioteca.Printer.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PrinterTest {

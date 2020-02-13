@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.view.Printer;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;

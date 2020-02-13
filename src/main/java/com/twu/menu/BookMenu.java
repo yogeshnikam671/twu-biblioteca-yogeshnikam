@@ -1,6 +1,6 @@
 package com.twu.menu;
 
-import com.twu.biblioteca.Printer;
+import com.twu.view.Printer;
 
 import java.util.ArrayList;
 import java.util.List;

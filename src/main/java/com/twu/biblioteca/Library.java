@@ -4,12 +4,13 @@ import com.twu.items.Book;
 import com.twu.items.Item;
 import com.twu.items.ItemType;
 import com.twu.items.Movie;
+import com.twu.view.Printer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.twu.biblioteca.DataInitializer.*;
+import static com.twu.data.DataInitializer.*;
 
 public class Library {
     private HashMap<ItemType, List<Item>> checkedOutItems;

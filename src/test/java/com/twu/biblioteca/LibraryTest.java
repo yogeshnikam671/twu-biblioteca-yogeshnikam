@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import com.twu.items.Book;
 import com.twu.items.ItemType;
 import com.twu.items.Movie;
+import com.twu.view.Printer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

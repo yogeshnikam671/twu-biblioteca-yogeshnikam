@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.view;
 
 public class Printer {
 

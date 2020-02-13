@@ -1,11 +1,10 @@
 package com.twu.menu;
 
 import com.twu.biblioteca.Library;
-import com.twu.biblioteca.Printer;
+import com.twu.view.Printer;
 import com.twu.biblioteca.User;
 import com.twu.items.Book;
 import com.twu.items.ItemType;
-import com.twu.items.Movie;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.twu.menu;
 
-import com.twu.biblioteca.Printer;
+import com.twu.view.Printer;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;

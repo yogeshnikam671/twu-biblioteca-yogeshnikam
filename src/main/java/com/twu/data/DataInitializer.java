@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.data;
 
+import com.twu.biblioteca.User;
 import com.twu.items.Book;
 import com.twu.items.Item;
 import com.twu.items.Movie;

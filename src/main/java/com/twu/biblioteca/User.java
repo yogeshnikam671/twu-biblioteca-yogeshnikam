@@ -1,8 +1,8 @@
 package com.twu.biblioteca;
 
-import java.util.Objects;
+import com.twu.view.Printer;
 
-import static com.twu.biblioteca.Printer.*;
+import java.util.Objects;
 
 public class User {
     private String libraryNumber;
