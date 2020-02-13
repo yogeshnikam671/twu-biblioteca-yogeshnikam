@@ -17,14 +17,14 @@ public abstract class MainMenuOption {
     private static HashMap<Integer, MainMenuOption> optionsMap;
 
 
-    public static final MainMenuOption SHOW_BOOKS = new MainMenuOption() {
+    private static final MainMenuOption SHOW_BOOKS = new MainMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer) {
             library.show(ItemType.BOOK);
         }
     };
 
-    public static final MainMenuOption LOG_IN = new MainMenuOption() {
+    private static final MainMenuOption LOG_IN = new MainMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer) {
 
@@ -57,7 +57,7 @@ public abstract class MainMenuOption {
         }
     };
 
-    public static final MainMenuOption CHECKOUT_MOVIE = new MainMenuOption() {
+    private static final MainMenuOption CHECKOUT_MOVIE = new MainMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer) {
             printer.print("Enter Name and Year Of Release, respectively");
@@ -68,14 +68,14 @@ public abstract class MainMenuOption {
         }
     };
 
-    public static final MainMenuOption SHOW_MOVIES = new MainMenuOption() {
+    private static final MainMenuOption SHOW_MOVIES = new MainMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer) {
             library.show(ItemType.MOVIE);
         }
     };
 
-    public static final MainMenuOption QUIT = new MainMenuOption() {
+    private static final MainMenuOption QUIT = new MainMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer) {
             System.exit(0);

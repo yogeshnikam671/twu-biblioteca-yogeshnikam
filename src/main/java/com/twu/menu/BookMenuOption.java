@@ -16,16 +16,15 @@ public abstract class BookMenuOption {
 
     private static HashMap<Integer, BookMenuOption> optionsMap;
 
-    public static final BookMenuOption VIEW_INFO = new BookMenuOption() {
+    private static final BookMenuOption VIEW_INFO = new BookMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer, User user) {
             User loggedInUser = library.getQueriedUser(user);
             loggedInUser.displayInfo(printer);
-            return;
         }
     };
 
-    public static final BookMenuOption CHECKOUT_BOOK = new BookMenuOption() {
+    private static final BookMenuOption CHECKOUT_BOOK = new BookMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer, User user) {
             printer.print("Enter Title, Author and Year Of Publication, respectively");
@@ -37,7 +36,7 @@ public abstract class BookMenuOption {
         }
     };
 
-    public static final BookMenuOption RETURN_BOOK = new BookMenuOption() {
+    private static final BookMenuOption RETURN_BOOK = new BookMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer, User user) {
             printer.print("Enter Title, Author and Year Of Publication, respectively");
@@ -49,7 +48,7 @@ public abstract class BookMenuOption {
         }
     };
 
-    public static final BookMenuOption VIEW_CHECKED_OUT_BOOKS = new BookMenuOption() {
+    private static final BookMenuOption VIEW_CHECKED_OUT_BOOKS = new BookMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer, User user) {
 
@@ -69,11 +68,10 @@ public abstract class BookMenuOption {
         }
     };
 
-    public static final BookMenuOption GO_BACK = new BookMenuOption() {
+    private static final BookMenuOption GO_BACK = new BookMenuOption() {
         @Override
         public void process(Library library, Scanner scanner, Printer printer, User user) {
             MainMenuOption.flag = false;
-            return;
         }
     };
 
