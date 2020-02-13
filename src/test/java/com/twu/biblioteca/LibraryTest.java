@@ -3,6 +3,8 @@ package com.twu.biblioteca;
 import com.twu.items.Book;
 import com.twu.items.ItemType;
 import com.twu.items.Movie;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -11,9 +13,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 class LibraryTest {
+    private PrintStream sysOut;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    Printer printer = new Printer();
     User user = new User("123-4567", "dada");
+
+
+    @BeforeEach
+    public void setUpStreams() {
+        sysOut = System.out;
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void revertStreams() {
+        System.setOut(sysOut);
+    }
 
     @Test
     void shouldBeAbleToShowListOfBooks() {
@@ -26,7 +44,7 @@ class LibraryTest {
         books.add(new Book("B", "Henry", "2017"));
         books.add(new Book("C", "Richard", "2012"));
 
-        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
+        Library library = new Library(printer);
 
 
         library.show(ItemType.BOOK);
@@ -38,8 +56,7 @@ class LibraryTest {
     @Test
     void shouldAllowTheCustomerToCheckOutABook() {
         Printer printer = new Printer();
-        Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer, new DataInitializer());
+        Library library = new Library(printer);
 
         List<Book> books = new ArrayList<>();
         books.add(new Book("A", "Charles", "2015"));
@@ -55,8 +72,7 @@ class LibraryTest {
     @Test
     void shouldAllowTheCustomerToReturnABook() {
         Printer printer = new Printer();
-        Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer, new DataInitializer());
+        Library library = new Library(printer);
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK, user);
@@ -71,7 +87,7 @@ class LibraryTest {
         System.setOut(new PrintStream(outContent));
         Printer printer = new Printer();
 
-        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
+        Library library = new Library(printer);
 
         library.show(ItemType.MOVIE);
 
@@ -81,8 +97,7 @@ class LibraryTest {
     @Test
     void shouldAllowTheCustomerToCheckOutAMovie() {
         Printer printer = new Printer();
-        Librarian librarian = new Librarian(printer);
-        Library library = new Library(librarian, printer, new DataInitializer());
+        Library library = new Library(printer);
 
 
         List<Movie> movies = new ArrayList<>();
@@ -98,7 +113,7 @@ class LibraryTest {
     @Test
     void shouldBeAbleToCheckIfTheUserIsValid() {
         Printer printer = new Printer();
-        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
+        Library library = new Library(printer);
         User user = new User("123-4567","dada");
 
         assertTrue(library.isValid(user));
@@ -107,7 +122,7 @@ class LibraryTest {
     @Test
     void shouldBeAbleToCheckIfTheUserIsInvalid() {
         Printer printer = new Printer();
-        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
+        Library library = new Library(printer);
         User user = new User("234-5678","dada");
 
         assertFalse(library.isValid(user));
@@ -119,11 +134,70 @@ class LibraryTest {
         Movie expectedMovie = new Movie("Dabangg","2015", "Rajesh","10" );
 
         Movie movie = new Movie("Dabangg","2015");
-        Library library = new Library(new Librarian(printer), printer, new DataInitializer());
+        Library library = new Library(printer);
 
         Movie movieContainingAllInfo = library.getQueriedMovie(movie);
 
 
         assertEquals(expectedMovie, movieContainingAllInfo);
+    }
+
+    @Test
+    void shouldNotifyCustomerOnSuccessfulCheckoutOfTheBook() {
+        Library library = new Library(new Printer());
+        String expectedMessage = "Thank You! Enjoy the book\n\n";
+
+        library.checkOut(new Book("A", "Charles", "2015"), ItemType.BOOK, user);
+
+        assertEquals(expectedMessage, outContent.toString());
+    }
+
+    @Test
+    void shouldNotifyCustomerOnUnSuccessfulCheckoutOfTheBook() {
+        Library library = new Library(new Printer());
+        String expectedMessage = "Sorry, that book is not available\n\n";
+
+        library.checkOut(new Book("B", "Charles", "2015"), ItemType.BOOK, user);
+
+        assertEquals(expectedMessage, outContent.toString());
+    }
+
+    @Test
+    void shouldNotifyCustomerOnSuccessfulReturnOfTheBook() {
+        Library library = new Library(new Printer());
+        String expectedMessage = "Thank You! Enjoy the book\n\nThank you for returning the book\n\n";
+
+        library.checkOut(new Book("A", "Charles", "2015"), ItemType.BOOK, user);
+        library.returnBack(new Book("A", "Charles", "2015"), ItemType.BOOK, user);
+
+        assertEquals(expectedMessage, outContent.toString());
+    }
+
+    @Test
+    void shouldNotifyCustomerOnUnSuccessfulReturnOfTheBook() {
+        Library library = new Library(new Printer());
+        String expectedMessage = "Thank You! Enjoy the book\n\nInvalid Return Request\n\n";
+
+        library.checkOut(new Book("A", "Charles", "2015"), ItemType.BOOK, user);
+        library.returnBack(new Book("A", "Charles", "2017"), ItemType.BOOK, user);
+
+        assertEquals(expectedMessage, outContent.toString());
+    }
+
+    @Test
+    void shouldBeAbleToTellIfUserIsAccountableToReturnABookOrNot() {
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        User user1 = new User("123-4567", "dada");
+        User user2 = new User("123-4568", "dada");
+
+        Book book = new Book("A", "Charles", "2015");
+        Library library = new Library(printer);
+
+        library.checkOut(book, ItemType.BOOK, user1);
+        library.returnBack(book, ItemType.BOOK, user2);
+
+        assertEquals("Thank You! Enjoy the book\n\nInvalid Return Request\n\n", outContent.toString());
     }
 }
