@@ -14,7 +14,7 @@ import static java.lang.Integer.parseInt;
 public abstract class MainMenuOption {
     public static boolean flag = true;
 
-    private static HashMap<Integer, MainMenuOption> OptionsMap;
+    private static HashMap<Integer, MainMenuOption> optionsMap;
 
 
     public static final MainMenuOption SHOW_BOOKS = new MainMenuOption() {
@@ -84,22 +84,22 @@ public abstract class MainMenuOption {
 
 
     static {
-        OptionsMap = new HashMap<>();
+        optionsMap = new HashMap<>();
         initializeHashMap();
     }
 
     public static MainMenuOption getOption(int selectedOption) {
-        return OptionsMap.get(selectedOption);
+        return optionsMap.get(selectedOption);
     }
 
     public abstract void process(Library library, Scanner scanner, Printer printer);
 
     private static void initializeHashMap() {
-        OptionsMap.put(1, SHOW_BOOKS);
-        OptionsMap.put(2, LOG_IN);
-        OptionsMap.put(3, SHOW_MOVIES);
-        OptionsMap.put(4, CHECKOUT_MOVIE);
-        OptionsMap.put(5, QUIT);
+        optionsMap.put(1, SHOW_BOOKS);
+        optionsMap.put(2, LOG_IN);
+        optionsMap.put(3, SHOW_MOVIES);
+        optionsMap.put(4, CHECKOUT_MOVIE);
+        optionsMap.put(5, QUIT);
     }
 
 }

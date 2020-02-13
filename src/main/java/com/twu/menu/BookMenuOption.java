@@ -14,7 +14,7 @@ import static com.twu.items.Book.*;
 
 public abstract class BookMenuOption {
 
-    private static HashMap<Integer, BookMenuOption> OptionsMap;
+    private static HashMap<Integer, BookMenuOption> optionsMap;
 
     public static final BookMenuOption VIEW_INFO = new BookMenuOption() {
         @Override
@@ -79,22 +79,22 @@ public abstract class BookMenuOption {
 
 
     static {
-        OptionsMap = new HashMap<>();
+        optionsMap = new HashMap<>();
         initializeHashMap();
     }
 
     public static BookMenuOption getOption(int selectedOption) {
-        return OptionsMap.get(selectedOption);
+        return optionsMap.get(selectedOption);
     }
 
     public abstract void process(Library library, Scanner scanner, Printer printer, User user);
 
     private static void initializeHashMap() {
-        OptionsMap.put(1, VIEW_INFO);
-        OptionsMap.put(2, CHECKOUT_BOOK);
-        OptionsMap.put(3, RETURN_BOOK);
-        OptionsMap.put(4, VIEW_CHECKED_OUT_BOOKS);
-        OptionsMap.put(5, GO_BACK);
+        optionsMap.put(1, VIEW_INFO);
+        optionsMap.put(2, CHECKOUT_BOOK);
+        optionsMap.put(3, RETURN_BOOK);
+        optionsMap.put(4, VIEW_CHECKED_OUT_BOOKS);
+        optionsMap.put(5, GO_BACK);
     }
 
 }
