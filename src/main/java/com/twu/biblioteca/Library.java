@@ -48,9 +48,9 @@ public class Library {
         if(item == null)
             return;
 
-        List<Item> list = items.get(itemType);
-        if (list.contains(item)) {
-            list.remove(item);
+        List<Item> checkedOutList = items.get(itemType);
+        if (checkedOutList.contains(item)) {
+            checkedOutList.remove(item);
             markAsCheckedOut(item, itemType, user);
             notifyAsSuccessfulCheckoutOf(itemType);
             return;
@@ -63,9 +63,9 @@ public class Library {
         if (itemType == ItemType.BOOK && !isAccountable(user[0], item))
             return;
 
-        List<Item> list = items.get(itemType);
+        List<Item> itemsList = items.get(itemType);
         if (isCheckedOut(item, itemType)) {
-            list.add(item);
+            itemsList.add(item);
             markAsReturned(item, itemType, user);
             printer.print(SUCCESS_RETURN_MESSAGE);
             return;
