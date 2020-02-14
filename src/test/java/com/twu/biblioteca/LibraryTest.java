@@ -58,11 +58,9 @@ class LibraryTest {
     void shouldAllowTheCustomerToCheckOutABook() {
         Printer printer = new Printer();
         Library library = new Library(printer);
-
         List<Book> books = new ArrayList<>();
         books.add(new Book("A", "Charles", "2015"));
         books.add(new Book("B", "Henry", "2017"));
-
         Book book = new Book("C", "Richard", "2012");
 
         library.checkOut(book, ItemType.BOOK, user);

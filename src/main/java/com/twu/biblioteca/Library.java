@@ -48,9 +48,9 @@ public class Library {
         if(item == null)
             return;
 
-        List<Item> checkedOutList = items.get(itemType);
-        if (checkedOutList.contains(item)) {
-            checkedOutList.remove(item);
+        List<Item> itemsList = items.get(itemType);
+        if (itemsList.contains(item)) {
+            itemsList.remove(item);
             markAsCheckedOut(item, itemType, user);
             notifyAsSuccessfulCheckoutOf(itemType);
             return;
@@ -128,7 +128,7 @@ public class Library {
     private void markAsCheckedOut(Item item, ItemType itemType, User... user) {
         checkedOutItems.get(itemType).add(item);
 
-        if (user.length != 0)
+        if (itemType == ItemType.BOOK)
             accountableUsers.add(user[0]);
     }
 
